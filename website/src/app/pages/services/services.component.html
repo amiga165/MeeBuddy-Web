@@ -1,0 +1,31 @@
+<div *ngIf="products.length > 0; else elseBlock" class="container-fluid" style="width:90%;">
+	<section id="category">
+		<div class="explore-menu-section pt-5 pb-5">
+	        <div class="container-fluid">
+	            <div class="row section-container" *ngFor="let data of products">
+
+	                <div class="col-12">
+	                    <h1 class="menu-section-heading">{{data.name}}</h1>
+	                </div>
+		
+	                <div *ngFor="let shop of data.shops | paginate: { itemsPerPage: 12, currentPage: p }" class="col-12 col-md-4 col-lg-3 pl-5">
+	                    <div class="shadow menu-item-card p-3 mb-3">
+	                        <img src="{{shop.image}}" class="menu-item-image w-100" />
+	                        <h3 class="menu-card-title">{{shop.name}}</h3>
+	                        <a href="/shop/{{shop.name}}" class="view-all">
+	                            Book Service
+	                            <svg width="16px" height="16px" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="#d0b200" xmlns="http://www.w3.org/2000/svg">
+	                                <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+	                            </svg>
+	                        </a>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <pagination-controls class="text-center" (pageChange)="p = $event"></pagination-controls>
+	</section> 
+</div>
+<ng-template #elseBlock>
+	<app-page404></app-page404>	
+</ng-template>

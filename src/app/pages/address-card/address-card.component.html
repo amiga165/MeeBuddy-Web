@@ -1,0 +1,21 @@
+            <div class="bg-white card addresses-item mb-4 border border-primary shadow">
+                <div class="gold-members p-4">
+                    <div class="media">
+			<input *ngIf="partial" type="radio" class="form-control" name="selectAddr" value="{{address._id}}" style="width: 20px;" [checked]="Default === address._id">
+                        <div class="mr-3"><i class="icofont-ui-home icofont-3x"></i></div>
+                        <div class="media-body">
+                            <p class="add">{{address.name | titlecase}}<span *ngIf="Default === address._id" style="float:right" class="badge badge-secondary">Default</span></p>
+                            <p class="add">{{address.address | titlecase}}</p>
+                            <p class="add">{{data.userLocation.village.name}}</p>
+                            <p class="add">{{data.userLocation.mandal}}, {{data.userLocation.district}}</p>
+                            <p class="add">{{address.mobile_num}}</p>
+                            <button *ngIf="!partial" class="btn btn-sm btn-primary mr-1" type="button"  data-toggle="modal" data-target="#edit" (click)="select(address._id)">Edit</button>
+			    <button *ngIf="partial" class="btn btn-sm btn-primary mr-1" type="button" (click)="partialEmit(address._id)">Edit</button>
+                            <button class="btn btn-sm btn-primary mr-1" type="button"  (click)="delete(address._id)">Delete</button>
+                            <button *ngIf="Default !== address._id" class="btn btn-sm btn-primary mr-1" type="button"  (click)="default(address._id)">Set Default</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<app-addressform *ngIf="isSelected" [data]="[address]" (onClose)="close($event)"></app-addressform>

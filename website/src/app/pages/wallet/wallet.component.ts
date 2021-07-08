@@ -1,0 +1,147 @@
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../../_services/user.service';
+import { DataService } from '../../_services/data.service';
+import { APIService } from '../../_services/api.service';
+import { AlertService } from "../../_services/alert.service";
+import swal from 'sweetalert';
+
+declare var Razorpay: any;
+
+@Component({
+  selector: 'app-wallet',
+  templateUrl: './wallet.component.html',
+  styleUrls: ['./wallet.component.scss']
+})
+
+export class WalletComponent implements OnInit {
+
+  walletForm : FormGroup;
+  submitted: boolean = false;
+  transactions : any = [];
+  amount: number;
+  walletId: any;
+
+
+  constructor(
+    private formBuilder : FormBuilder, 
+    private user : UserService, 
+    public data : DataService,
+    private toastr: AlertService,
+    private api : APIService,
+    
+    ) {
+	this.getTransactions();
+    }
+
+  ngOnInit(): void {
+
+    this.getTransactions();
+    this.walletForm = this.formBuilder.group({
+      amount : ['', Validators.required]
+    });
+  }
+
+  close(){
+    let closebutton : HTMLElement = document.getElementById("modalclose") as HTMLElement;
+    closebutton.click();
+    this.walletForm.reset();
+  }
+
+  get f() { return this.walletForm.controls }
+
+  getTransactions(){
+    this.user.getwalletTransactions()
+    .then(res =>{
+      this.transactions = res;
+      console.log(this.amount);
+    })
+  }
+
+  updateWallet() {
+        this.data.userData.info.wallet += this.amount;
+	this.getTransactions();
+  }
+
+  walletSubmit(){
+    this.submitted = true;
+    if(this.walletForm.invalid) {
+      return;
+    }
+    else{
+      this.user.addToWallet(parseInt(this.f.amount.value))
+      .then(res => {
+        this.close();
+        this.walletId = res.wallet_id;
+
+        var total = Math.ceil(res.amount * 1.03) * 100; // by including 3 % tax
+	console.log(res.amount);
+
+        var options = {
+          name: "MeeBuddy Shopping",
+          payment_capture: 1,
+          description: "Payment for Meebuddy Center Shopping Order.",
+          image: "https://meebuddy.com/images/min_logo_meebuddy.jpg",
+          currency: "INR",
+          order_id : res.rzp_order_id,
+          key: "rzp_live_DJA2rvcCmZFLh3",
+          amount_no : total,
+          prefill: {
+            name: this.data.userData.info.name,
+            email: this.data.userData.info.email || "sample@meebuddy.com",
+            contact: this.data.userData.info.mobile_num,
+          },
+          notes: {
+            center_id: this.data.center._id,
+            center_name: this.data.center.id,
+            payment_for: "center shopping order",
+            Refund : "Meebuddy testing",
+          },
+          modal: {
+                  "ondismiss": function(){
+                        console.log("Checkout form closed"); 
+                        cancelCallback("Cancelled!");
+                  }
+          },
+          handler: response => {
+                var payment_data = {
+                  wallet_id: this.walletId,
+                  razorpay_payment_id: response.razorpay_payment_id,
+                  razorpay_order_id: response.razorpay_order_id,
+                  razorpay_signature: response.razorpay_signature,
+                };
+		console.log("response Handler");
+                this.user.addWallet(payment_data).then(x => {
+                  if(x) { 
+			this.updateWallet();
+                  }
+                });
+          },
+          theme: {
+            color: "#3399cc",
+          },
+        };
+
+
+        var cancelCallback = error => {
+          this.user.deleteTransaction(res.wallet_id)
+          .then(res => {
+            if(res){
+              swal({
+                  title: "Seems like error!",
+                  text: "Please try again!",
+                  icon: "error",
+              })
+            }
+          });
+        };
+        
+        var rzp = new Razorpay(options);
+        rzp.on("payment.failed", cancelCallback);
+        rzp.open();
+
+      });
+    }
+  }
+
+}

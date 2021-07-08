@@ -1,0 +1,11 @@
+--2020-12-08 05:51:40--  https://techcrunch.com/wp-content/uploads/2015/03/groceries-e1554037962210.jpg?w=730
+Resolving techcrunch.com (techcrunch.com)... 152.199.38.114
+Connecting to techcrunch.com (techcrunch.com)|152.199.38.114|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 88473 (86K) [image/jpeg]
+Saving to: ‘groceries-e1554037962210.jpg?w=730’
+
+groceries-e1554037962210.jpg?w=730             0%[                                                                                               ]       0  --.-KB/s               groceries-e1554037962210.jpg?w=730           100%[==============================================================================================>]  86.40K  --.-KB/s    in 0.01s   
+
+2020-12-08 05:51:40 (6.97 MB/s) - ‘groceries-e1554037962210.jpg?w=730’ saved [88473/88473]
+

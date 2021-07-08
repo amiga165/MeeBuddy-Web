@@ -1,0 +1,45 @@
+<div class="navbar navbar-default visible-xs">
+  <div class="container-fluid filter">
+    <a class="transponse" data-toggle="collapse" data-target="#filter-sidebar">
+      <i class="fa fa-tasks"></i>
+    </a>
+  </div>
+</div>
+
+<div class="container-fluid stick-filter">
+  <div class="row">
+    <!-- filter sidebar -->
+    <div
+      id="filter-sidebar"
+      class="col-10 col-lg-12 visible-sm visible-md visible-lg filter-sidebar collapse sliding-sidebar"
+    >
+      <div>
+        <a
+          class="closeButton"
+          data-target="#filter-sidebar"
+          data-toggle="collapse"
+        >
+          <h4 class="float-right">X</h4>
+        </a>
+        <h4 data-toggle="collapse" data-target="#group-4">
+          <i class="fa fa-fw fa-caret-down parent-expanded"></i>
+          <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
+          Categories
+        </h4>
+        <div id="group-4" class="list-group collapse in">
+          <ng-container *ngFor="let tag of filtered_tags">
+            <label *ngIf="tag">
+              <input
+                type="radio"
+                name="price"
+                value="{{ tag }}"
+                (click)="getValue($event.target.value)"
+              />
+              <span>{{ tag }}</span>
+            </label>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

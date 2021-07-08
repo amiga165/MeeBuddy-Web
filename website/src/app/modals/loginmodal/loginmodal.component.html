@@ -1,0 +1,76 @@
+<div class="modal fade" id="Login" role="dialog">
+    <div class="modal-dialog" style="width: inherit;">
+      <div class="modal-content">
+        <div class="modal-header" style="border-bottom: none; padding: 0.5rem;">
+            <h5 class="modal-title"></h5>
+            <button type="button" class="close ml-0" data-dismiss="modal" aria-label="Close" #remove>
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="text-center mb-3"><img src="https://meebuddy.com/images/meebuddy_logo.png" style="height: 100px;"></div>
+            <form role="form" [formGroup]="login">
+
+              <div class="form-group">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fa fa-phone"> </i>
+                    </span>
+                  </div>
+                  <input
+                    class="form-control"
+                    placeholder="Contact Number"
+                    type="text"
+                    formControlName="contact"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-group mb-3">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="ni ni-email-83"> </i>
+                    </span>
+                  </div>
+                  <input
+                    class="form-control"
+                    placeholder="Email (Optional)"
+                    type="email"
+                    formControlName="mail"
+                  />
+                </div>
+              </div>
+              
+              <div class="form-group mb-3">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fa fa-tag fa-lg"> </i>
+                    </span>
+                  </div>
+                  <input
+                    class="form-control"
+                    placeholder="Referral Code (Optional)"
+                    type="text"
+                    formControlName="referral"
+                  />
+                </div>
+              </div>
+          
+              <div class="text-center">
+                <button type="button" class="btn btn-primary my-4" data-toggle="modal" data-target="#Otp" data-dismiss="modal" [disabled]="!login.valid" (click)="submit()">
+                  Send OTP
+                </button>
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div *ngIf="valid">
+    <app-verifyotp></app-verifyotp>
+</div>

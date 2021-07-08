@@ -1,0 +1,113 @@
+<nav>
+  <div class="wrapper" [ngStyle]="{'display': canShow() ? 'contents' : 'none'}">
+    <input type="radio" name="slider" id="menu-btn">
+    <input type="radio" name="slider" id="close-btn">
+    <ul class="nav-links">
+      <label for="close-btn" class="btn close-btn"> X </label>
+     
+ 
+<!--        <li>
+        <a [routerLink]="['/restaurants']" class="desktop-item dropdown-toggle">Restaurants</a>
+        <input type="checkbox" id="restaurant">
+        <label for="restaurant" class="mobile-item dropdown-toggle">Restaurants</label>
+        <div class="mega-box">
+          <div class="content">
+            <ng-container *ngFor="let chunks of chunk(dataService.center.categories?.shopping)">
+              <div class="row">
+                <ul class="mega-links">
+                  <li *ngFor="let shop of chunks"><a
+                      routerLink="/{{ shop.items_count ? 'shop' :  'shopping' }}/{{shop.center.name}}/{{shop.url_name}}"
+                      (click)="close()">{{shop.name.split("(")[0] | titlecase}}</a></li>
+                </ul>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </li> -->
+
+      <li>
+        <a [routerLink]="['/shopping']" class="desktop-item dropdown-toggle">Online Store</a>
+        <input type="checkbox" id="shopping">
+        <label for="shopping" class="mobile-item dropdown-toggle">Online Store</label>
+        <div class="mega-box">
+          <div class="content">
+            <ng-container *ngIf="dataService.center.categories?.shopping?.length > 0; else showLocation">
+              <ng-container *ngFor="let chunks of chunk(dataService.center.categories?.shopping)">
+                <div class="row">
+                  <ul class="mega-links">
+                    <li *ngFor="let shop of chunks"><a
+                        routerLink="/{{ shop.items_count ? 'shop' :  'shopping' }}/{{shop.center.name}}/{{shop.url_name}}"
+                        (click)="close()">{{shop.name.split("(")[0] | titlecase}}</a></li>
+                  </ul>
+                </div>
+              </ng-container>
+            </ng-container>
+          </div>
+        </div>
+      </li>
+
+<!-- {{shop.name | replaceAll}}-{{shop._id}} -->
+      <li>
+        <a [routerLink]="['/services']" class="desktop-item dropdown-toggle">Services</a>
+        <input type="checkbox" id="service">
+        <label for="service" class="mobile-item dropdown-toggle">Services</label>
+        <div class="mega-box">
+          <div class="content">
+            <ng-container *ngIf="dataService.center.categories?.service?.length > 0; else showLocation">            
+              <ng-container *ngFor="let chunks of chunk(dataService.center.categories?.service)">
+                <div class="row">
+                  <ul class="mega-links">
+                    <li *ngFor="let shop of chunks"><a routerLink="/services/{{shop.name | replaceAll}}-{{shop._id}}"
+                        (click)="close()">{{shop.name}}</a></li>
+                  </ul>
+                </div>
+              </ng-container>
+            </ng-container>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <a [routerLink]="['/services']" class="desktop-item dropdown-toggle">Local Products</a>
+        <input type="checkbox" id="products">
+        <label for="products" class="mobile-item dropdown-toggle">Local Products</label>
+        <div class="mega-box">
+          <div class="content">
+            <ng-container *ngIf="dataService.center.categories?.products?.length > 0; else showLocation">
+              <ng-container *ngFor="let chunks of chunk(dataService.center.categories?.products)">
+                <div class="row">
+                  <ul class="mega-links">
+                    <li *ngFor="let shop of chunks"><a routerLink="/local-product/{{shop.name | replaceAll}}-{{shop._id}}"
+                        (click)="close()">{{shop.name}}</a></li>
+                  </ul>
+                </div>
+              </ng-container>
+            </ng-container>
+          </div>
+        </div>
+      </li>
+
+      <li><a [routerLink]="['/image-order']" (click)="close()">Image Order</a></li>
+
+      <li ><a style="border:2px solid rgb(226, 151, 233);padding: 2px;" href='manager.php' (click)="close()">Apply for Franchise<img style="height: 50px;" src='assets/img/new-icon-gif.jpg'></a></li>
+    </ul>
+    <label for="menu-btn" class="btn menu-btn"><i class="fa fa-bars" style="color:white"></i></label>
+  </div>
+</nav>
+
+<ng-template #showLocation>
+  <div class="row"></div>
+  <div class="row">
+    <a data-toggle="modal" data-target="#location" style="cursor: pointer;">
+     <div class="text-center text-muted" style="margin-top: 80px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="50%" height="70%" fill="#ff66cc" class="bi bi-geo-alt" viewBox="0 0 16 16">
+          <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+          <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+        </svg>
+        <h2 class="text-uppercase mt-2" style="color: #ff66cc; font-weight: bold;"> Add Location </h2>
+      </div>
+    </a>
+  </div>
+  <div class="row"></div>
+
+</ng-template>

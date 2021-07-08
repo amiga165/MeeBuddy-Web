@@ -1,0 +1,201 @@
+$primary-color: #00005c;
+$text-color: mix(#000, $primary-color, 64%);
+
+label {
+  display: flex;
+  margin-left: 35px;
+  cursor: pointer;
+  font-weight: 700;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0.375em;
+  input {
+    position: absolute;
+    left: -9999px;
+    &:checked + span {
+      background-color: mix(#fff, $primary-color, 84%);
+      &:before {
+        box-shadow: inset 0 0 0 0.4375em $primary-color;
+      }
+    }
+  }
+  span {
+    display: flex;
+    align-items: center;
+    padding: 0.375em 0.75em 0.375em 0.375em;
+    border-radius: 99em;
+    transition: 0.25s ease;
+    &:hover {
+      background-color: mix(#fff, $primary-color, 84%);
+    }
+    &:before {
+      display: none;
+      flex-shrink: 0;
+      content: "";
+      background-color: #fff;
+      width: 1.5em;
+      height: 1.5em;
+      border-radius: 50%;
+      margin-right: 0.375em;
+      transition: 0.25s ease;
+      box-shadow: inset 0 0 0 0.125em $primary-color;
+    }
+  }
+}
+
+// site specific
+
+.container-fluid {
+  max-width: 960px;
+}
+
+// utility
+
+[data-toggle="collapse"] {
+  cursor: pointer;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.valign-middle {
+  vertical-align: middle !important;
+}
+
+input {
+  width: 20px;
+}
+
+.closeButton {
+  display: none;
+}
+
+// responsive table override
+
+// wrap responsive table in media query
+@media screen and (max-width: 767px) {
+  .closeButton {
+    display: block !important;
+  }
+  /*  .table-responsive {
+
+    thead,
+    tbody,
+    tfoot,
+    tr,
+    th,
+    td {
+      display: block;
+    }
+
+    thead {
+      display: none;
+    }
+
+    .align-center,
+    .align-right {
+      text-align: inherit;
+    }
+    
+    tr {
+      border-top: 1px solid #ddd;
+      
+      &:first-child {
+        border: 0;
+      }
+    }
+
+    // override bootstrap's styling
+    > tbody > tr > td {
+      padding-left: 50%;
+      border-top-color: rgba(221, 221, 221, 0.5);
+      
+      &:first-child {
+        border: 0;
+      }
+    }
+
+    [data-label] {
+      position: relative;
+
+      &:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 8px;
+        content: attr(data-label);
+        font-weight: bold;
+      }
+    }
+
+  }
+*/
+  // a little tweaking
+
+  .filter {
+    display: block !important;
+  }
+
+  .transponse {
+    float: right;
+  }
+  /*  
+  .navbar-fixed-top.visible-xs + .row {
+    padding-top: 60px; // height plus padding
+  }
+*/
+  .visible-xs {
+    display: inline-block !important;
+    width: 100%;
+    padding: 3px !important;
+  }
+
+  .sliding-sidebar {
+    position: absolute;
+    z-index: 1;
+    background: #fff;
+    min-height: 100%;
+
+    &.collapse,
+    &.collapsing {
+      display: block !important;
+      transform: translate3D(-100%, 0, 0) !important;
+      transition: all 200ms;
+    }
+
+    &.collapse.in,
+    &.collapse.show {
+      transform: translate3D(0, 0, 0) !important;
+      box-shadow: 1px 0 0 rgba(0, 0, 0, 0.05), 2px 0 0 rgba(0, 0, 0, 0.05),
+        3px 0 0 rgba(0, 0, 0, 0.05);
+    }
+    top: 75px;
+  }
+}
+
+.parent-collapsed {
+  display: none;
+}
+
+.collapsed {
+  .parent-expanded {
+    display: none;
+  }
+
+  .parent-collapsed {
+    display: inline-block;
+  }
+}
+
+.collapse:not(.show) {
+  display: block !important;
+}
+
+.visible-xs {
+  display: none;
+}

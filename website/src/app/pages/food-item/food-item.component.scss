@@ -1,0 +1,135 @@
+body {
+  padding: 2rem 0rem;
+}
+.card .card-img-overlay:after{
+        background: rgba(0, 0, 0, 0);
+        content: normal;
+}
+
+.btn-sm { padding: 0.40rem .5rem; }
+
+.like {
+  background: white;
+  border-radius: 10px;
+  height: 30px;
+  width: 25px;
+  font-size: 1.5rem;
+}
+
+.quantity {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.closed {
+        filter:grayscale(1);opacity:0.6;
+}
+
+h5, .card-title { font-size: medium; }
+
+.price { padding-right: 0px; }
+
+.blockButton {
+	filter:grayscale(1);opacity:0.6;
+	cursor: not-allowed !important;
+}
+
+.card {
+        flex-direction: row;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        margin-right: 15px;
+}
+img {
+        max-height: 120px;
+        padding: 5px;
+        border-radius: 10px;
+}
+
+h4 {
+        font-size: inherit;
+}
+
+.container-fluid {
+        width: 100% !important;
+}
+
+h5 { margin-top: 0px !important; }
+
+.card-body { padding: .5rem !important; }
+
+.justify-content-end { justify-content: unset !important; }
+
+.card-img-overlay { padding: .5rem !important; }
+
+.price {
+        padding: 0px !important;
+}
+
+h5 {
+        font-size: 15px;
+}
+
+select { width: auto; }
+
+
+@media only screen and (max-width: 900px) {
+
+	.card {
+	        margin-bottom: 5px;
+	        margin-right: 5px;
+	}
+
+}
+
+/*
+@media only screen and (max-width: 900px) {
+        .card { 
+		flex-direction: row;
+		margin-bottom: 5px;
+		border-radius: 5px;
+	}
+	img {     
+		max-height: 120px;
+		padding: 5px;
+		border-radius: 10px;
+	}
+
+	h4 {
+		font-size: inherit;
+	}
+
+	.container-fluid {
+		width: 100% !important;
+	}
+
+	h5 { margin-top: 0px !important; }
+
+	.card-body { padding: .5rem !important; }
+
+	.justify-content-end { justify-content: unset !important; }
+
+	.card-img-overlay { padding: .5rem !important; }
+
+	.price { 
+		padding: 0px !important;
+	}
+
+	h5 {
+		font-size: 15px;
+	}
+
+	select { width: auto; }
+	.col-6 {
+                left: 10px;
+                bottom: 10px;
+		padding-left: 0px;
+        }
+}
+*/
+/*
+img { 
+	flex: unset; 
+	padding: inherit;
+}
+*/

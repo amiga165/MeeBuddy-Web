@@ -1,0 +1,33 @@
+<div class="container-fluid searchbar"  style="width: 70%;">
+  <div class="cont">
+    <input type="text" [(ngModel)]="searchWord" placeholder="Let's Search Something ..." (input)="getItems()"/>
+  </div>
+</div>
+
+<div class="container-fluid searchbar" style="min-height:900px; width: 95%;">
+  <h4 style="font-weight: 550;"> Search Results: </h4>
+  <hr>
+
+  <div class="skeleton" *ngIf="loading; else results">
+    <div class="row justify-content-start" *ngFor="let i of [1,2,3]">
+      <div class="col-sm-12 col-lg-4 mt-3" *ngFor="let j of [1,2,3]">
+        <div>
+          <ngx-skeleton-loader [theme]="{ height: '150px', 'border-radius': '15px'}"></ngx-skeleton-loader>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #results>
+    <div class="row">
+      <div *ngIf="searchResults.length <= 0 && checked" class="text-center col-12 my-5">
+        <img class="img-fluid" src="../../../assets/img/no-results.png" height="350px">
+        <h2> Sorry No Results Found </h2>
+      </div>
+      <div class="col-lg-4 cardPad" *ngFor="let Item of searchResults">
+        <app-food-item [card]="Item"></app-food-item>
+  <!--      <app-search-item [item]="Item"></app-search-item> -->
+      </div>
+    </div>
+  </ng-template>
+</div>

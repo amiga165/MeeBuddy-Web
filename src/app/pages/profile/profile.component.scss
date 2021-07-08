@@ -1,0 +1,12 @@
+section{
+	min-height: 75vh;
+}
+
+@media only screen and (max-width: 900px) {
+	#profileTab { width: 100% !important; }
+	.nopad { padding: 0px !important; }
+	#myTab { position: relative !important; }
+	ul#myTab { flex-direction: row !important; }
+	.hide { display: none; }
+	.container-fluid { margin-top: 1rem !important; }
+}

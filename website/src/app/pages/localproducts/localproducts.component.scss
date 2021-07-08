@@ -1,0 +1,16 @@
+/* 
+@media only screen and (max-width: 900px) {
+        #localProds { width: 100% !important; }
+}
+*/
+
+@media only screen and (max-width: 900px) {
+        .container-fluid {
+                padding: 5px !important;
+                width: 100% !important;
+        }
+}
+
+.my-pagination ::ng-deep .ngx-pagination .current {
+	background: rgb(184, 76, 151);
+}

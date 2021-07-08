@@ -1,0 +1,86 @@
+<div *ngIf="!loading; else loaded"></div>
+	<ng-template #loaded>
+	<div id="Form" style="min-height: 900px; padding: 2rem 6rem 4rem 6rem;">
+	<h3 class="text-center" >{{data.name}}</h3>
+	<div class="alert alert-info alert-info text-center text-dark container" style="width:80%;" role="alert">
+  		{{data?.description}}
+	</div>
+	<div class="container">
+        <div class="card card-body" style="box-shadow: 10px 10px 10px 10px">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#apply" role="tab">Apply for service</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#myservices" role="tab">Previous services(<span class="text-danger">{{regServices?.length || 0}}</span>)</a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="apply" role="tabpanel">
+                    <div class="container my-5">
+                        <div class="row justify-content-center">
+                          <div class="col-12 col-md-8 col-lg-12 col-xl-6" id="formBody" style="flex: 0 0 85%;width: 80%; max-width: 100%">
+                          <form [formGroup]="serviceForm">
+                            <div class="row">
+				                          <h4 class="ml-3" style="font-family: Brush Script MT;">Select your problem type:</h4>
+                                <div class="col-12">
+                                    <div class="dropdown" style="width: inherit;">
+                                      <select class="btn text-dark form-control" style="border: 1px solid #cad1d7;" formControlName="subcat_id">
+                                        <option value="" disabled>Choose Problem Type...</option>
+                                       <option *ngFor="let choice of data?.types" [value]="choice._id">{{choice.name}}</option> 
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center">
+                              <div class="col mt-3">
+                                <textarea type="text" formControlName="service_desc" class="form-control" placeholder="Service Description ..."></textarea>
+                              </div>
+                              <input type="text" formControlName="service_id" [ngModel]="data?._id" hidden>
+                            </div>
+			  <div class="row align-items-center">
+				<div class="col mt-3">
+					<app-address-select (address)="setAddressId($event)"></app-address-select>
+				</div>
+			  </div>
+                            <div class="row justify-content-start">
+                              <div class="col text-center">
+                                <button type="submit" (click)="serviceSubmit()" class="btn btn-primary mt-4" [disabled]="!dataService.userData.isSignedIn">Submit</button>
+                              </div>
+                            </div>
+                            </form>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="myservices" role="tabpanel">
+
+                    <div class="container my-5">
+                      <div class="row">
+                        <div class="col-lg-6" *ngFor="let service of regServices">
+                          <div class="card card-body" style="border-radius: 20px 20px 20px 20px;">
+                            <div class="row">
+                              <div class="col-lg-8">
+                                <h5 class="ml-2">{{service.description | titlecase}}</h5>
+                                <h5 class="ml-2 text-muted">{{service.service}}</h5>
+                                <h6 class="ml-2">{{service.time}}</h6>
+                              </div>
+                              <div class="col-lg-4 text-center">
+                                <button class="btn btn-sm text-dark btn-success mt-lg-5">{{service.status}}</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+  </div>
+</ng-template> 

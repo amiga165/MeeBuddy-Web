@@ -1,0 +1,43 @@
+<div class="modal" id="rateus" tabindex="-1" data-backdrop="static" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="border-bottom: 0px; padding: inherit;">
+        <h5 class="modal-title"></h5>
+        <button type="button" (click)="close()" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form class="rating-wrapper">
+          <label class="rating-label">Give Us Rating
+            <div class="ratingItemList">
+              <input class="rating rating-1" id="rating-1-2" [(ngModel)]="feed.rating" type="radio" value="1"
+                name="rating" />
+              <label class="rating rating-1" for="rating-1-2"><i class="em em-disappointed"></i></label>
+              <input class="rating rating-2" id="rating-2-2" [(ngModel)]="feed.rating" type="radio" value="2"
+                name="rating" />
+              <label class="rating rating-2" for="rating-2-2"><i class="em em-disappointed_relieved"></i></label>
+              <input class="rating rating-3" id="rating-3-2" [(ngModel)]="feed.rating" type="radio" value="3"
+                name="rating" />
+              <label class="rating rating-3" for="rating-3-2"><i class="em em-expressionless"></i></label>
+              <input class="rating rating-4" id="rating-4-2" [(ngModel)]="feed.rating" type="radio" value="4"
+                name="rating" />
+              <label class="rating rating-4" for="rating-4-2"><i class="em em-grinning"></i></label>
+              <input class="rating rating-5" id="rating-5-2" [(ngModel)]="feed.rating" type="radio" value="5"
+                name="rating" />
+              <label class="rating rating-5" for="rating-5-2"><i class="em em-star-struck"></i></label>
+            </div>
+          </label>
+          <div class="feedback" *ngIf="feed.rating">
+            <textarea [(ngModel)]="feed.feedback" placeholder="What can we do to improve?" name="feedBack"></textarea>
+            <button class="btn btn-primary" (click)="postFeedback()" class="close" data-dismiss="modal"
+              aria-label="Close">Send Your Feedback</button>
+          </div>
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+</div>

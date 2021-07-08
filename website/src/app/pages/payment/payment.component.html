@@ -1,0 +1,135 @@
+ <section class="checkout" style="min-height: 800px">
+    <div class="container-fluid" id="cartDiv" style="width:90%">
+      <div id="mainCart" class="row flex-column">
+        <div class="col-lg-8">
+          <ul class="nav nav-pills">
+      <ng-container *ngFor="let nav of navitems; let i = index">
+            <li class="nav-item"  *ngIf="i<step; else elseBlock"><a  *ngIf="true" class="nav-link active" style="text-decoration: none;">{{nav}}</a></li>
+      <ng-template #elseBlock><li class="nav-item"><a  class="nav-link disabled" style="text-decoration: none;">{{nav}}</a></li></ng-template>
+            </ng-container> 
+   </ul>
+<div *ngIf="step === 1" class="tab-content">
+  <div id="order-review" class="tab-block">
+    <div class="cart">
+      <div class="cart-holder">
+
+  <div class="skeleton" *ngIf="loading; else loaded">
+        <div class="item-wrap" *ngFor="let i of [1, 2,3,4]">
+          <div class="item-img text-center my-2" style="width: 20%; float: left">
+            <ngx-skeleton-loader appearance="circle" [theme]="{ height: '100px',width: '100px', 'border-radius': '10px'}"></ngx-skeleton-loader>
+          </div>
+          <div class="item-content my-3" style="width: 80%; float: right">
+            <div>
+              <ngx-skeleton-loader [theme]="{ height: '30px'}"></ngx-skeleton-loader>
+            </div>
+            <p>
+              <ngx-skeleton-loader [theme]="{ height: '30px'}"></ngx-skeleton-loader>
+            </p>
+          </div>
+        </div>
+  </div>
+
+
+  <ng-template #loaded>
+        <div >
+        <div class="text-center" *ngIf="dataService.userData.isSignedIn ? dataService.cart?.list?.length === 0 : guest.guestCart?.items?.length === 0; else showcart">
+          <img src="../../../assets/img/empty-cart.png" class="img-fluid" style="max-width:100%;"> <br/>
+          <a [routerLink]="['/home']" class="btn btn-template-outlined wide prev text-center"><i class="fa fa-angle-left"></i>Add Items</a>
+        </div>
+        <ng-template #showcart>
+          <div class="basket-body card" *ngFor="let item of filterCategories()">
+              <!-- <h4>{{item.name}}</h4> -->
+            <ng-container *ngIf="item.items.length > 0"> 
+              <div class="basket-header">
+                <div class="row">
+                  <div class="col-lg-4 col-12 text-center" style="padding-left:8%;">{{item.name}}</div>
+                  <div class="col-2 text-center hide">Sub Total:  <i class="fa fa-inr" aria-hidden="true"></i>{{ subTotal(item._id)}}</div>
+                  <div class="col-2 text-center hide">Quantity</div>
+                  <div class="col-2 text-center hide">Unit Price</div>
+                  <div class="col-2 text-center hide"><a *ngIf="dataService.cart?.list?.length > 0 || guest.guestCart?.items?.length > 0" (click)="clearCart(item._id)" class="btn btn-sm colcode text-light">Clear All</a></div>
+                </div>
+              </div>
+
+               <div class="item row d-flex align-items-center" *ngFor="let prod of item?.items">
+                <div class="col-lg-6">
+                  <div class="d-flex align-items-center"><img src={{prod.product?.images[0]?.image_url}} alt="..." class="img-fluid" style="max-height">
+                    <div class="title">
+                      <a>
+                        <h6>{{prod.product.name}}</h6>
+                        <span class="text-muted" *ngFor="let quantity of prod.product.quantities">
+                          <ng-container *ngIf="prod.quantity === quantity._id">Size: {{quantity.quantity}}</ng-container>
+                        </span>
+                      </a>
+                    </div> 
+                  </div>
+                </div>
+                <div class="col-lg-2 col-4">
+                    <app-cartbutton (refreshCart)="refresh($event)" [CARD]="prod" [quantity]="getQuantity(prod.product.quantities,prod.quantity)"></app-cartbutton>
+                </div>
+                <div class="col-lg-2 col-4 text-center"> <span *ngFor="let quantity of prod.product.quantities">
+                  <ng-container *ngIf="prod.quantity === quantity._id"><i class="fa fa-inr" aria-hidden="true"></i>{{quantity.product_cost}}</ng-container></span> 
+                </div>
+                <div class="col-lg-2 col-4 text-center">
+                  <i (click)="deleteItem(prod)" class="fas fa-trash-alt"></i>
+                </div>
+              </div>
+
+              <div class="CTAs text-center" *ngIf="!dataService.userData.isSignedIn; else canShow">
+                <a  class="btn btn-template wide next" data-target="#Login" data-toggle="modal">
+                <i  aria-hidden="true" class="fa fa-user text-white"></i>
+                Login to place an order<i class="fa fa-angle-right"></i></a>
+              </div>
+              <ng-template #canShow>
+              <div class="CTAs d-flex justify-content-between flex-column-reverse flex-lg-row" *ngIf="dataService.cart?.list?.length !== 0">
+                <a [routerLink]="['/home']" class="btn btn-template-outlined wide prev"><i class="fa fa-angle-left"></i>Add Items</a>
+                <ng-container *ngIf="subTotal(item._id) >= item.minimum_order; else warn">
+                  <a (click)="inc(1, item)" class="btn btn-template-outlined wide">Take Away<i class="fa fa-angle-right"></i></a>
+                  <a (click)="inc(0, item)" class="btn btn-template wide next">Place Order<i class="fa fa-angle-right"></i></a>
+                </ng-container>
+              <ng-template #warn>
+                <div class="alert alert-warning alert-warning text-center text-dark container" style="margin: 0px;">Minimum order is Rs. {{item.minimum_order}}.</div>
+              </ng-template>     
+              </div>       
+              </ng-template>  
+   
+            </ng-container>
+          </div>
+        </ng-template>
+
+        </div>
+</ng-template> 
+      </div>
+    </div>
+
+        </div>
+</div>
+
+    <app-shipping *ngIf="step===2" [stage]="step" (value)="set($event)" (data)="setAddress($event)"></app-shipping>
+    <app-paymethod *ngIf="step === 3" [stage]="step" 
+      (value)="set($event)"
+      [takeaway]="takeAway" 
+      [shippingAddr]="selectedAddress"
+      [category]="category">
+    </app-paymethod>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="notes" *ngIf="step !== 3; else summary">
+            <h3 class="text-center">Important Notes</h3>
+            <div class="alert alert-info alert-info text-center text-dark container" role="alert">
+              Place orders within 10mins to get delivery charges benfits.
+            </div>
+            <div class="alert alert-info alert-info text-center text-dark container" role="alert">
+              Use <b>TakeAway</b>, if you wanna go and grab your order from the shop.
+            </div>
+          </div>
+          <ng-template #summary>
+            <div class="block-body order-summary" id="screenCart">
+            <app-summary [subamount]="amount" [totalamount]="total"></app-summary>
+            </div>
+          </ng-template>
+        </div>
+
+      </div>
+    </div>
+  </section>

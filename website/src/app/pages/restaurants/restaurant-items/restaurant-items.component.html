@@ -1,0 +1,68 @@
+<button #showBottom id="bottomBar" hidden></button>
+
+<div class="container-fluid" style="min-height: 900px;">
+	<section id="restaurant" class="restaurant">
+		<div class="row">
+			<div class="float-child-one" (scroll)="onScroll($event)">
+
+				<div class="item" *ngIf="loading; else loadFilter">
+					<ngx-skeleton-loader count="10" [theme]="{ height: '30px' }"></ngx-skeleton-loader>
+				</div>
+				<ng-template #loadFilter>
+					<app-filter-mobile [filtered_tags]="item_tags"></app-filter-mobile>
+				</ng-template>
+			</div>
+			
+
+			<div class="float-child-two">
+
+					<ng-container *ngIf="loading; else loaded">
+
+						<div class="row" style="justify-content: space-evenly;" *ngFor="let i of [1,2,3,4]">
+							<div class="col-sm-12 col-lg-3 mt-lg-3 mt-1" *ngFor="let j of [1,2,3]">
+								<ngx-skeleton-loader [theme]="{ height: '130px', 'border-radius': '15px'}"></ngx-skeleton-loader>
+							</div>
+						</div>
+					</ng-container>
+
+		            <ng-template #loaded>
+						<div class="row section-container">
+							<div class="col-12 float-right">
+								<app-search-bar (searchTerm)="searchWord($event)"></app-search-bar>
+							</div>
+						</div>
+						
+						<div *ngIf="products[0]?.items.length <= 0 && canShow" style="height:600px;padding: 100px;" class="text-center"><img src="../../../assets/img/no_result_found.png" class="img-fluid" height="400px"></div>
+						<div class="row section-container" id="{{item.sub_category}}" *ngFor="let item of foodItems"
+						infinite-scroll
+						[infiniteScrollDistance]="'1'"
+						[infiniteScrollUpDistance]="'2'"
+						[infiniteScrollThrottle]="300"
+						(scrolled)="onScrollDown()"
+						(scrolledUp)="onUp()">
+						
+							<h4 class="col-11 catName mb-3" *ngIf="item.list.length > 0">{{item.sub_category}} - ({{item.list.length}})</h4>
+							<div class="col-md-6 col-lg-4 item" *ngFor="let Card of item.list">
+								<app-food-item [card]="Card"></app-food-item>
+							</div>
+						</div>
+					</ng-template>
+<!--				
+				<pagination-controls 
+			
+					class="d-flex justify-content-center mt-3 my-pagination" 
+					autoHide="true" 
+					responsive="true" 
+					[maxSize]="maxSize" 
+					(pageChange)="p = $event">
+					
+				</pagination-controls>  -->
+			</div>
+		</div>
+	        <app-floatapp [filtered_tags]="foodItems" id="mobile-menu"></app-floatapp>
+	</section>
+</div>
+
+<app-update-address-modal></app-update-address-modal>
+
+

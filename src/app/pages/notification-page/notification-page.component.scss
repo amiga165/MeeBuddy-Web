@@ -1,0 +1,70 @@
+// font 
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+
+h1, h2, h3, h4, h5, h6 { color: black; }
+
+p { margin: 0px !important; }
+.card { margin-bottom: 5px; }
+
+// colors and vars: 
+$dark:#282828;
+$size:18px;
+$card: white;
+$wh:black;
+$hover:#576574;
+
+// container 
+.container-fluid{
+  width:100%;
+  min-height: 73vh;
+  padding-right: 5px;
+  padding-left: 5px;
+
+  // content 
+  .content {
+    width:100%;
+    margin: 10px 0px 10px 0px;
+
+    // card 
+    .card {
+      background:$card;
+      padding:3px;
+      position:relative;
+      overflow:hidden;
+      opacity:0;
+      transition:.5s ease;
+      border-radius: 15px 15px 15px 15px;
+      animation:start .9s ease .1s forwards;
+      &:hover{ 
+        transition:.5s ease;
+        background:$card;
+        transform:translateY(-5px);
+        cursor:pointer;
+      }
+      
+      @keyframes start {
+        0%{opacity:0;}
+        50%{opacity:.5;}
+        100%{opacity:1;}
+      }
+
+      // details 
+      .details {
+        padding:3px;
+        p {
+          opacity:0;
+          color:$wh;
+          font-size: 10px;
+          font-weight: 600;
+          animation:start .9s ease .5s forwards;
+           @keyframes start {
+            0%{opacity:0;transform:translateY(-25px);}
+            50%{opacity:.5;transform:translateY(0px);}
+            100%{opacity:1;transform:translateY(-5px);}
+          }
+        }
+      }
+    }
+  }
+}

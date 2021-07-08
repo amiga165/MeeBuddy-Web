@@ -1,0 +1,67 @@
+<div *ngIf="link !== 'shopping' && link !== 'shop'; else canShow" class="ckHxAC homecard" [ngClass]="{ 'disabled': data.status === 'close' }">
+	<a  routerLink="/{{link}}/{{data.name | replaceAll}}-{{data._id}}" [ngClass]="{ 'disabled': data.status === 'close' }" class="jxbqi7-0 eTesqN">
+		<div class="sc-10mkyz7-0 sc-1woi3cc-0 sc-1yp76rj-15 fZGmZQ d-flex flex-row">
+			<div class="sc-10mkyz7-0 dWkYtl">
+				<img src="{{data.image_url}}" alt="{{data.name}}" title="{{data.name}}" width="125px" height="125px" class="sc-1go0t46-0 iDllLp sc-1yp76rj-12 sc-1s2qoyf-0 kJwaGX store-card-container">
+			</div>
+			<div class="sc-10mkyz7-0 sc-1yp76rj-14 bpBmPm">
+				<div class="sc-10mkyz7-0 sc-1woi3cc-0 jVQreV">
+					<div class="sc-10mkyz7-0 sc-1woi3cc-0 KhJWx">
+						<p class="sc-1gu8y64-0 BbwkM sc-1yp76rj-0 erRpXH" [ngStyle]="{'font-size': data.name.length > 45 ? '13px' : '17px' }">{{data.name}}</p>
+					</div>
+<!-- 					<div class="sc-10mkyz7-0 sc-1woi3cc-0 hFKtcn">
+						<p class="sc-1gu8y64-0 BbwkM sc-1yp76rj-1 sc-1yp76rj-2 eOZgJA">8:00am - 21:30pm</p>
+					</div> -->
+<!--					<div *ngIf="data.status === 'close'" class="text-center sc-10mkyz7-0 sc-1woi3cc-0 hFKtcn">
+						<button class="btn btn-sm text-dark btn-warning">Closed</button>
+					</div> -->
+				</div>
+			</div>
+		</div>
+	</a>
+</div>
+
+<ng-template #canShow>
+<div  class="ckHxAC homecard" [ngClass]="{ 'disabled': data.status === 'close' }">
+	<a routerLink="/{{link}}/{{data.center.name}}/{{data.url_name}}" [ngClass]="{ 'disabled': data.status === 'close' }" class="jxbqi7-0 eTesqN">
+		<div class="sc-10mkyz7-0 sc-1woi3cc-0 sc-1yp76rj-15 fZGmZQ d-flex flex-row">
+			<div class="sc-10mkyz7-0 dWkYtl">
+				<img src="{{data.image_url}}" alt="{{data.name}}" title="{{data.name}}" width="125px" height="125px" class="sc-1go0t46-0 iDllLp sc-1yp76rj-12 sc-1s2qoyf-0 kJwaGX store-card-container">
+			</div>
+			<div class="sc-10mkyz7-0 sc-1yp76rj-14 bpBmPm">
+				<div class="sc-10mkyz7-0 sc-1woi3cc-0 jVQreV">
+					<div class="sc-10mkyz7-0 sc-1woi3cc-0 KhJWx">
+						<p class="sc-1gu8y64-0 BbwkM sc-1yp76rj-0 erRpXH" [ngStyle]="{'font-size': data.name.length > 45 ? '13px' : '17px' }">{{data.name}}</p>
+					</div>
+<!-- 					<div class="sc-10mkyz7-0 sc-1woi3cc-0 hFKtcn">
+						<p class="sc-1gu8y64-0 BbwkM sc-1yp76rj-1 sc-1yp76rj-2 eOZgJA">8:00am - 21:30pm</p>
+					</div> -->
+<!--					<div *ngIf="data.status === 'close'" class="text-center sc-10mkyz7-0 sc-1woi3cc-0 hFKtcn">
+						<button class="btn btn-sm text-dark btn-warning">Closed</button>
+					</div> -->
+				</div>
+			</div>
+		</div>
+	</a>
+</div>
+</ng-template>
+
+
+<!-- 
+<a *ngIf="link==='/services' || link==='/local-product'" routerLink="/{{link}}/{{data.name | replaceAll}}-{{data._id}}" [ngClass]="{ 'disabled': data.status === 'close' }">
+			     <div class="shadow menu-item-card p-3 mb-3" [ngClass]="{'closed': data.status === 'close'}" style="border-radius: 20px;">
+	                        <img src="{{data.image_url}}" class="menu-item-image w-100" height="200px" style="border-radius: 10px;"/>
+	                        <div class="card-data"><h3 class="menu-card-title">{{data.name}}</h3>
+	                      
+
+	                        <a routerLink="/{{link}}/{{data.name | replaceAll}}-{{data._id}}" *ngIf="data.status === 'open'" class="desktop-link view-all">
+	                            Quick View
+	                            <svg width="16px" height="16px" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="#d0b200" xmlns="http://www.w3.org/2000/svg">
+	                                <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+	                            </svg>
+	                        </a>
+				</div>
+	                    </div> 
+</a>
+shopping' ?  : 
+ -->

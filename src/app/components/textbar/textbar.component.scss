@@ -1,0 +1,17 @@
+.hero {
+   height: 0vh;
+   padding: 0px;
+}
+
+.hero-text {
+  position: relative;
+  transform: translate(-2%,-50%);
+  font-size: 80px;
+  letter-spacing: 2px;
+}
+.text {
+  display: inline-block;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1;
+}

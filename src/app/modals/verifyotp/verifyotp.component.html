@@ -1,0 +1,53 @@
+<div class="modal fade" id="Otp" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-body">
+            <h5 class="float-right">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" #cancel>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </h5>
+
+            <div class="card-body px-lg-5 py-lg-3">
+                <div class="text-center text-muted mb-4">
+                    <h2> OTP Verification </h2>
+                </div>
+                <div>
+                    <p style="text-align: center;font-size: 15px;font-weight: bold;color: #40405E;">
+                        Mobile Number: +91 {{dataService.userData?.signup?.mobile_num}} 
+                        <i class="fa fa-pencil-square-o" data-toggle="modal" data-target="#Login" data-dismiss="modal" aria-hidden="true"></i>
+                    </p>
+                    <h5 class="my-3 mb-5" style="text-align: center;color:  #8888A5;">
+                        To Enjoy Meebuddy Services Verify your Mobile Number.
+                    </h5>
+                </div>
+                <form role="form">
+                  <div class="form-group">
+                    <div class="input-group">
+                        <div id="divOuter">
+                            <div id="divInner">
+                                <input class="partitioned"  [(ngModel)]="otpCode" type="text" maxlength="6" name="otp">
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="text-center">
+                    <button class="btn btn-primary my-4" type="button" (click)="verify()">
+                      Verify
+                    </button>
+                  </div>
+
+                  <div class="col-12">
+                    <a href="javascript:;" (click)="resend()" class="col-6" [ngClass]="{'disable': !canShow}" > Resend OTP?
+                    </a> 
+                    <div class="col-6 text-center" style="float:right;" id="countdown"></div>
+                  </div>
+
+                </form>
+          </div>
+        </div>
+      </div> 
+  </div>
+</div>
+

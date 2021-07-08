@@ -1,0 +1,42 @@
+import { Component, OnInit } from '@angular/core';
+import { RestaurantService } from "../../../services/restaurant.service";
+import { ActivatedRoute } from '@angular/router';
+import { Restaurants } from "../../../constants/";
+import { CenterService } from "../../../_services/center.service";
+
+@Component({
+  selector: 'app-shops',
+  templateUrl: './shops.component.html',
+  styleUrls: ['./shops.component.scss']
+})
+export class ShopsComponent implements OnInit {
+
+  status : boolean = false;
+  products: any[] = [];
+  sub: any[] = [];
+  p: number = 1;
+  name: string = "";
+  id :string = "";
+
+  constructor(private myservice:RestaurantService, private route: ActivatedRoute, private center: CenterService) { }
+
+  ngOnInit(): void {
+//	this.name = this.route.snapshot.paramMap.get('name');
+//	this.sub = Restaurants.filter((obj) => {return obj.category=="Online Store"});
+//	console.log(this.sub);
+//	this.products = this.myservice.getItems(this.name,this.sub[0].items);
+//	console.log(this.products);
+	this.getShops();
+  }
+
+  getShops(){
+
+    this.name = this.route.snapshot.paramMap.get('name');
+    this.id = this.name.split("-").slice(-1)[0]; console.log(this.id);
+    this.center.getSubCategories(,this.id).
+	then(res => {
+		this.products = res;
+	});
+  }
+
+}

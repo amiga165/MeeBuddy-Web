@@ -1,0 +1,133 @@
+<app-addressform *ngIf="isSelected" [data]="editaddress" (onClose)="close($event)" (changeAddress)="addressChange($event)"></app-addressform>
+
+<div class="tab-content" style="padding: 40px 0 0;">
+  <div id="address" class="active tab-block">
+    <form action="#">
+      <div>
+        <h4 class="col-8 float-left">Shipping address</h4>
+        <a style="cursor: pointer" (click)="editAddress()" data-toggle="modal" data-target="#edit" class="btn btn-template wide next col-4 addAddress">+ Add <span class="hide">Address</span></a>
+      </div>
+	
+	<div>      
+      <div id="scrollablee" style="height: 320px;width:100%;">
+        
+        <div class="row mx-3">
+          
+	 <div class="text-center" *ngIf="address?.length === 0; else addressCard">
+	          <img src="../../../assets/img/empty-cart.png" class="img-fluid" style="max-width:100%;"> <br/>
+        </div>
+	<ng-template #addressCard>
+          <div class="col-lg-6" style="margin-top: 15px;" *ngFor="let shipping of address">
+              <div class="card hovercard clickable">
+                <label style="width: 100%;">
+                <div style="margin-top: 25px;">
+                  <input type="radio" id="preferred" (click)="selAddress(shipping._id)" name="selector" value="{{shipping._id}}" [checked]="selected === shipping._id">
+                 <div class="check"></div> 
+                </div>
+            
+                <div class="text-left" style="margin-bottom: 2px; padding-left:20px;">
+                  <p class="add">{{shipping.name}}</p>
+                  <p class="add">{{shipping.address}}</p>
+                  <p class="add">{{dataService.userLocation.village.name}}</p>
+                  <p class="add">{{dataService.userLocation.mandal}}, {{dataService.userLocation.district}}</p>
+                  <p class="add">{{shipping.mobile_num}}</p>
+                </div>
+              </label>
+                <div style="margin-left:50%; margin-bottom: 20px;">
+                  <a style="color:#9055A2" *ngIf="defAddr !== shipping._id" (click)="setDefaultAddress(shipping._id)">Set default</a>&nbsp;&nbsp;
+                  <a style="color:#9055A2; cursor: pointer" (click)="editAddress(shipping)" data-toggle="modal" data-target="#edit">Edit</a>&nbsp;&nbsp;
+                 <a style="color:#9055A2" *ngIf="editaddress && shipping._id == editaddress.address_id && editable == true" (click)="cancelEdit()">Cancel</a>&nbsp;&nbsp;
+                  <a style="color:#9055A2" (click)="deleteAddress(shipping._id)">Delete</a>
+                </div>
+
+              </div>
+            
+          </div>
+	</ng-template>
+        </div>
+      </div>
+	</div>
+
+
+      <!-- <div id="addresscont" *ngIf="editable == false">
+        <div class="card">
+          <label style="margin-bottom:0px">
+            <div id="headingTwo" role="tab" class="card-header">
+              <h6 style="color: #9055A2;margin-left: 30px;">
+                <input value="newAddress" type="radio"  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#addaddress" aria-expanded="false" aria-controls="collapseTwo" name="selector">
+                <div class="check" style="top:15px;"><div class="inside"></div></div>
+                Add Address
+              </h6>
+            </div>
+          </label>
+
+          <div id="addaddress" role="tabpanel" aria-labelledby="headingTwo" class="collapse">
+            <div class="card-body">
+
+              <div class="row">
+
+                <div class="form-group col-md-6">
+                  <label for="firstname" class="form-label">Name</label>
+                  <input id="firstname" type="text" name="first-name" [(ngModel)]="shippingAddr.name" class="form-control">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="phone-number" class="form-label">Phone Number</label>
+                  <input id="phone-number" type="tel" name="phone-number"  [(ngModel)]="shippingAddr.mobile_num" class="form-control">
+                </div>
+
+                <div class="form-group col-md-12">
+                  <label for="street" class="form-label">Address</label>
+                  <input id="street" type="text" name="address"  [(ngModel)]="shippingAddr.address" class="form-control">
+                </div>
+              </div> 
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      Edit Address
+
+
+      <div class="card mt-4" *ngIf="editable == true">
+        <div class="card-header"><h5>Edit Address</h5></div>
+        <div id="edit_address">
+          <div class="card-body">
+
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="firstname" class="form-label">Name</label>
+                <input id="firstname" type="text" name="first-name" [(ngModel)]="editaddress.name" class="form-control">
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="phone-number" class="form-label">Phone Number</label>
+                <input id="phone-number" type="tel" name="phone-number"  [(ngModel)]="editaddress.mobile_num" class="form-control">
+              </div>
+
+              <div class="form-group col-md-12">
+                <label for="street" class="form-label">Address</label>
+                <input id="street" type="text" name="address"  [(ngModel)]="editaddress.address" class="form-control">
+              </div>
+              
+              <div class="form-group col-md-12 mt-4">
+                <button (click)="updateAddress()" class="btn btn-template wide next"> Save Changes</button>
+              </div>
+
+            </div> 
+
+          </div>
+        </div>
+      </div>  -->
+<!-- 
+                /Invoice Address -->
+      <div class="CTAs d-flex justify-content-between flex-column-reverse flex-lg-row">
+        <a (click)="back()" class="btn btn-template-outlined wide prev"> <i class="fa fa-angle-left"></i>Back to Cart</a>
+        <a (click)="next()" class="btn btn-template wide next">Choose delivery method<i class="fa fa-angle-right"></i></a>
+      </div>
+    </form>
+  </div>
+</div>
+
+

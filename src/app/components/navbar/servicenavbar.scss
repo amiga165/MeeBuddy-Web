@@ -1,0 +1,149 @@
+.fWaRxC {
+  box-sizing: border-box;
+  display: flex;
+  position: relative;
+  height: 18px;
+  width: 18px;
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+  font-size: 12px;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  right: 7px;
+  top: -7px;
+  background: rgb(255, 46, 86);
+  padding: 1px;
+  border-radius: 50%;
+}
+
+.ps-2 {
+    padding-left: .5rem !important;
+}
+
+li > .dropdown-menu {
+  opacity:0; visibility: hidden;
+  transition-delay: 3s;
+  }
+
+li:hover > .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        overflow: visible;
+}
+
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu{
+  top: 60px;
+  right: 0px;
+  left: unset;
+  box-shadow: 0px 5px 7px -1px #c1c1c1;
+  padding-bottom: 0px;
+  padding: 0px;
+}
+.dropdown-menu:before{
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: 12px;
+  left: 80%;
+  border:10px solid #343A40;
+  border-color: transparent transparent #ffffff transparent;
+}
+
+
+/*.custom-toggler .navbar-toggler-icon {
+
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+
+}
+
+
+
+.custom-toggler.navbar-toggler {
+
+  border-color: rgb(255,102,203);
+
+} */ 
+
+
+#lblCartCount {
+  font-size: 12px;
+  background: #ff0000;
+  color: #fff;
+  padding: 0 5px;
+  vertical-align: top;
+  margin-left: -10px;
+}
+.badge {
+  padding-left: 9px;
+  padding-right: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+}
+
+@media all and (min-width: 992px) {
+  .navbar-dark .navbar-nav .nav-link {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 992px) {
+  .navbar .navbar-brand {
+    margin-top: unset;
+  }
+  .navbar .nav-item {
+    margin-top: 1rem;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .navbar .hide {
+    display: none !important;
+  }
+  .navbar-toggler {
+    display: block;
+    padding: 0.15rem 0.5rem;
+  }
+  #brand-logo {
+    margin-right: 0.25rem !important;
+    max-width: 100% !important;
+  }
+  #location {
+    float: right !important;
+  }
+  .navbar-expand .navbar-nav .nav-link {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
+  .mobile-notification {
+    display: block !important;
+  }
+  .cart {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+}
+
+.abs-center-x {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  margin-top: 10px important;
+}
+
+.showcursor {
+  cursor: pointer !important;
+}
+
+.mobile-notification {
+  display: none;
+}

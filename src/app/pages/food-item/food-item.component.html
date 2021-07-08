@@ -1,0 +1,46 @@
+<div class="card" id="{{card._id}}" [ngClass]="{'closed': card.status === 'close'}">
+	<img class="card-img col-4" src="{{card.images[0].image_url}}" style="height:300px;" alt="Image">
+		<div class="card-img-overlay d-flex justify-content-end col-4" style="height:50%;">
+		<a class="card-link like" href='javascript:;' (click)='wishlist(card._id);' *ngIf="dataService.userData.isSignedIn">
+			<i [ngClass]="dataService.checkWishlist(card._id) ? 'fas fa-heart text-red' : 'far fa-heart text-red'"></i>
+		</a>
+		<a class="card-link like" data-toggle="modal" data-target="#Login" *ngIf="!dataService.userData.isSignedIn">
+			<i [ngClass]="dataService.checkWishlist(card._id) ? 'fas fa-heart text-red' : 'far fa-heart text-red'"></i>
+		</a>
+		</div>
+    <div class="card-body col-8" style="padding: 1rem;">
+	  <h4 class="card-title" style="color:darkgoldenrod">{{card.name}}</h4>
+	  <a href="/shop/{{card.category.name | replaceAll}}-{{card.category._id}}" *ngIf="card?.category" style="text-align:left; font-size: small; font-weight:800;"><i class="fa fa-home" aria-hidden="true"></i> {{card.category.name}}</a>	
+	<div class="options d-flex flex-fill">
+	<h6 class="quantity" *ngIf="card.quantities?.length ==1; else menu">Quantity: {{card.quantities[0]?.quantity}}</h6>
+	<ng-template #menu>
+        <select class="custom-select mt-1" [(ngModel)]="selected" name="dropdowns">
+	<option [ngValue]="first" *ngFor="let single of first" selected>{{single.quantity}}</option> 
+          <option [ngValue]="[detail]"  *ngFor="let detail of card.quantities| slice:1">
+            <b>{{detail.quantity}}</b>
+          </option>
+        </select>
+	</ng-template>
+      </div>
+
+	<div class="col-12" style="padding: 0">
+		<div class="buy d-flex justify-content-between align-items-center mt-1">
+		        <div class="price text-success col-6">
+		          <h5 class="mt-4" *ngFor="let test of selected"><span><i class="fa fa-inr" aria-hidden="true"></i>{{test.product_cost}}  <del class="text-danger" *ngIf="test.product_cost !== test.mrp_cost"><i class="fa fa-inr" aria-hidden="true"></i>{{test.mrp_cost}}</del></span></h5>
+		        </div>
+			<div class="col-6">
+				<ng-container *ngIf="card.status === 'open'; else invalid">	
+					<app-cartbutton [CARD]="card" [quantity]="selected"></app-cartbutton>
+				</ng-container>
+				<ng-template #invalid>
+					<button  type="button" class="btn-sm btn-muted" style="float: right;" disabled>
+					     {{card.status === 'sold-out' ? 'Sold out' : 'Closed'}}
+					</button>
+
+				</ng-template>
+			</div>
+		</div>
+	  </div>
+	</div>
+</div>
+

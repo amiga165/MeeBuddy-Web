@@ -1,0 +1,13 @@
+<div class="container">
+    <h5 class="font-weight-bold mt-0 mb-4 text-uppercase">Manage Addresses</h5>
+	<div *ngIf="AddressDet?.length == 0; else loaded" class="text-center"> <img src="../../../assets/img/empty-product.png" class="img-fluid" alt="No Items Found"> </div>
+    <ng-template #loaded>
+    <div class="row">
+        <div class="col-md-5" *ngFor="let addr of AddressDet">
+		<app-address-card [address]="addr" (selected)="deleteAddr($event)" [Default]="defAddr" (newDefault)="setDefault($event)"></app-address-card>
+        </div>
+    </div>
+    </ng-template>
+</div>
+
+

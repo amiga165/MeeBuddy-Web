@@ -1,0 +1,90 @@
+[id^="lightbox-"] {
+  &:target {
+    opacity:1;
+    pointer-events:inherit;
+    img{
+      filter:blur(0);
+    }
+  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(black, 0.5);
+  display: flex;
+  opacity:0;
+  transition: opacity 450ms ease-in-out;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  .content {
+    max-width: 90%;
+    position: relative;
+    color: #fff;
+    &:hover > a.close {
+      opacity: 1;
+      transform: scale(1, 1);
+    }
+    &:hover > .title {
+      opacity: 1;
+      transform: translateY(-3px); //Fix extra line at end
+      &::after{
+        opacity:1;
+      }
+    }
+    & > * {
+      transition: all 450ms ease-in-out;
+    }
+  }
+  .title {
+    display: block;
+    margin: 0;
+    padding: 1em;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    transform: translateY(50%);
+    font-size:1.5em;
+    opacity:0;
+    &::after{
+      content: ' ';
+      background-color: rgba(black, 0.4);
+      bottom:0;
+      left:0;
+      height:100%;
+      width:100%;
+      position:absolute;
+      transition: all 350ms ease-in-out 250ms;
+      opacity:0;
+      transform-origin:bottom;
+      mix-blend-mode: soft-light;
+    }
+  }
+  img {
+    max-height: 90vh;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    filter: blur(50px);
+  }
+  a.close {
+    width: 2em;
+    height: 2em;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: rgba(black, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0, 0);
+    opacity: 0;
+    transform-origin: right top;
+    text-decoration:none;
+    color:#fff;
+    &::after {
+      content: "X";
+    }
+  }
+}

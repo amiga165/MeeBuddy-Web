@@ -1,0 +1,80 @@
+<div class="container-fluid">
+        <div class="row main-container2" style="background-image: linear-gradient( 135deg, rgba(60, 8, 118, 0.8) 0%, rgba(250, 0, 118, 0.8) 100%);">
+            <div class=" container banner-section-bg-container1 d-flex justify-content-top flex-column col-sm-12" style="padding-bottom: 20px;">
+                <div class="row content-div">
+                    <div class="col-md-2"></div>
+                    <div class="mt-5 ml-2 col-md-8" style="text-align: center;">
+
+
+                        <h1 class="display-3 text-white">Dreaming of becoming a Franchise Manager in your local area?</h1>
+                        <p class="banner-caption">Start your first move today!</p>
+                        
+                     <a class="btn btn-secondary btn-round" href="manager.php " >Register for Franchise here</a>
+                    </div>
+                   <!--  <div class="app-screen  col-md-3">
+                        <img src="https://www.meebuddy.com/old/images/mobile/mobile_frame1.png" height="300px" class="app-img" />
+                    </div> -->
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+<section id="services" class="bg-secondary">
+  <div class="container-fluid">
+    <div class="row text-center justify-content-center">
+      <div class="col-lg-12" style="padding-top: 10px;">
+        <h3 class="display-3">
+          Our Services
+        </h3>
+        <p class="lead">
+          We're constantly trying to express ourselves and actualize our
+          dreams. 
+        </p>
+      </div>
+    </div>
+      <div class="row row-grid mt-1 ml-1">
+        <div *ngFor="let card of cards" class="col-md-6 col-lg-4 mt-2">
+          <div class="card card-lift--hover shadow border-0">
+           
+            <div class="card-body py-2" style="min-height: 200px;">
+              <b><h5 class="title text-info text-uppercase">{{card.title}}</h5></b>
+              <p>
+                {{card.description}}
+              </p>
+            
+              <a routerLink="{{card.link}}" class="btn btn-primary mt-2">{{card.button}}</a>
+            </div>                
+          </div>
+        </div>
+      </div>
+
+  </div>    
+</section>
+
+
+<div class="container-fluid bg-gradient-default">
+        <div class="row main-container2 bg-gradient-default">
+            <div class=" container banner-section-bg-container1 d-flex justify-content-top flex-column col-sm-12">
+                <div class="row content-div">
+                    <div class="col-md-1"></div>
+                    <div class="mt-5 ml-2 col-md-7">
+
+
+                        <h1 class="banner-heading">One stop solution for all your daily needs!</h1>
+                        <p class="banner-caption">Download our app now and Order anything of your choice</p>
+                        
+                        <a href="https://play.google.com/store/apps/details?id=com.meebuddy.android"><img class="img" src="https://meebuddy.com/assets/img/playstore.png" alt="play store" /></a>
+                        <a href="https://apps.apple.com/us/app/meebuddy/id1554306664"><img class="img" src="https://meebuddy.com/assets/img/applestore.png" alt="App store" /></a>
+                    </div>
+                    <div class="app-screen  col-md-3">
+                        <img src="https://www.meebuddy.com/old/images/mobile/mobile_frame1.png" height="300px" class="app-img" />
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>

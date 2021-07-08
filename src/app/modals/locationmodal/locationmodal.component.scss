@@ -1,0 +1,66 @@
+@keyframes hide{
+    0%{ opacity: 1; z-index: 9;  }
+    99% { opacity: 0; top:-100px;  }
+    100% {  opacity: 0; top:-100px; z-index: 0;   }
+}
+
+@keyframes show{
+    0%{ opacity: 0 ;  }
+    100% { opacity: 1;transform: none; }
+}
+
+
+
+input {
+  background-color: inherit;
+   border-radius: 3rem;
+   border:2px solid white;
+}
+
+.modal-content{
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+}
+
+
+.modal.left .modal-dialog {
+		position: fixed;
+		margin: auto;
+		width: 320px;
+		height: 100%;
+		-webkit-transform: translate3d(0%, 0, 0);
+		    -ms-transform: translate3d(0%, 0, 0);
+		     -o-transform: translate3d(0%, 0, 0);
+		        transform: translate3d(0%, 0, 0);
+}
+
+.modal.left.fade .modal-dialog{
+  left: 0px;
+  -webkit-transition: opacity 0.1s linear, left 0.1s ease-out;
+     -moz-transition: opacity 0.1s linear, left 0.1s ease-out;
+       -o-transition: opacity 0.1s linear, left 0.1s ease-out;
+          transition: opacity 0.1s linear, left 0.1s ease-out;
+}
+
+.modal.left.fade.in .modal-dialog{
+  left: 0;
+}
+  
+
+
+::ng-deep .autocomplete-container .input-container input{
+  background-color: inherit !important;
+  border:2px solid rgb(66, 66, 66) !important;
+  font-size: 14px;
+  box-sizing: border-box;
+  border: none;
+  box-shadow: none;
+  outline: 0;
+  background-color: #fff;
+  color: rgba(0,0,0,.87);
+  width: 100%;
+  padding: 0 0px;
+  line-height: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.5) !important;
+}

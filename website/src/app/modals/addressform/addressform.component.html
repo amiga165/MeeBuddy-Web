@@ -1,0 +1,51 @@
+<div class="modal" tabindex="-1" role="dialog" id="edit">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h4 class="font-weight-bold mt-0 mb-4">{{add ? "Add" : "Update"}} Address</h4>
+          <form>
+            <div class="row">
+
+              <div class="form-group col-md-6">
+                <label for="firstname" class="form-label">Name</label>
+                <input id="firstname" type="text" placeholder="Name" name="name" [(ngModel)]="data.name" class="form-control">
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="phone-number" class="form-label">Phone Number</label>
+                <input id="phone-number" type="tel" placeholder="Your phone number" name="phone" [(ngModel)]="data.mobile_num" class="form-control">
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="street" class="form-label">Address</label>
+                <input id="street" type="text" placeholder="Your street name" name="address" [(ngModel)]="data.address" class="form-control">
+              </div>
+              
+              <div class="form-group col-md-6">
+                <label for="firstname" class="form-label">Village</label>
+                <input id="firstname" type="text" value="{{dataService.userLocation.village.name}}" class="form-control" disabled>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="firstname" class="form-label">Mandal</label>
+                <input id="firstname" type="text" value="{{dataService.userLocation.mandal}}" class="form-control" disabled>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="phone-number" class="form-label">District</label>
+                <input id="phone-number" type="tel" name="phone" value="{{dataService.userLocation.district}}" class="form-control" disabled>
+              </div>
+
+            </div> 
+        </form>        
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateAddr()">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closing()">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>

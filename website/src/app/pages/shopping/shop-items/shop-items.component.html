@@ -1,0 +1,33 @@
+<div class="container-fluid" style="width: 85%;">
+	
+	<section id="restaurant">
+<!--		<app-filter-mobile></app-filter-mobile> -->
+		<div class="row">
+<!--			<div class="float-child-one">
+				<app-filter [filtered_tags]="item_tags" (radioEvent)="RadioVal($event)" *ngIf="products.length > 0"></app-filter>
+			</div>  -->
+
+			
+			<div class="float-child-two">
+
+				<div class="row section-container" *ngFor="let item of products">
+
+			<!--    <div class="col-lg-12">
+						<h4 class="display-3 text-danger my-5">
+						{{item.item_tags| slice:-1}}
+						</h4>
+					</div> -->
+
+					<div class="col-md-6 col-lg-4" *ngFor="let Card of item.items | paginate: { itemsPerPage: 9, currentPage: p }">
+						<app-food-item [card]="Card"></app-food-item>
+					</div>
+
+					<pagination-controls class="text-center" [maxSize]="maxSize" (pageChange)="p = $event"></pagination-controls>
+
+				</div>
+			</div>
+
+		</div>
+	</section>
+</div>
+

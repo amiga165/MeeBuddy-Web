@@ -1,0 +1,75 @@
+<div>
+  <div class="row my-auto flex-column flex-md-row">
+    <div class="col-md-4 my-auto">
+        <small class="mb-1 p-auto float-left">Order ID: {{card._id}}</small>
+    </div>
+    <div class="col-md-2 my-auto col-6">
+      <small class="mb-1 p-auto float-left">Total: &#8377; {{card.final_cost}} </small>
+    </div>
+    <div class="col-md-2 my-auto hide">
+      <small class="mb-1 p-auto float-left">Total Items: {{card.details.items_count}}</small>
+    </div>
+    <div class="col-md-2 my-auto col-6">
+      <small class="mb-1 p-auto float-left payment">Paymethod: {{card.details.preferred_payment}}</small>
+    </div>  
+    <div class="col-md-2 my-auto hide">
+        <small class="mb-0 float-right" class="mb-1 p-auto float-right">{{card.placed_time}}</small>
+    </div>
+  </div>          
+</div>
+
+<hr style="width: 100%">
+
+<div style="width:100%" class="row">
+  <div class="media" style="width:85%; float:left;">
+    <div class="sq align-self-center"> 
+      <img class="img-fluid my-auto align-self-center mr-lg-2 mr-md-4 pl-lg-0 p-lg-0 m-lg-0 orderImg" src="assets/img/jacket.png" width="135" height="135" />
+    </div>
+    <div class="media-body my-auto text-right">
+      <div class="row my-auto flex-column flex-md-row">
+        <div class="col-md-8 my-auto">
+          <h6 class="mb-1 p-auto float-left">THE ARCHER Men Vest (Medium)</h6>
+        </div>
+      </div>
+      <div class="row my-auto flex-column flex-md-row">
+        <div class="col-md-4 my-auto">
+          <small class="float-left">Size: &nbsp; 5 Litres</small>
+        </div>
+        <div class="col-md-3 my-auto">
+          <small class="float-left">Quantity: &nbsp; 2</small>
+        </div>
+        <div class="col-md-3 my-auto">
+          <h6 class="mb-0 float-left"> &#8377;2000</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mediaLinks" style="width:15%; float:right;padding: 5px;">
+    <div class="col-md-12 col-6 btnClass" id="cancel">
+      <button style="width: inherit;" class="btn btn-primary mt-2 orderBtn"  type="button" >Cancel</button>
+    </div>
+    <div class="col-md-12 col-6 btnClass" id="order">
+      <button (click)="open()" data-target="#rateus" data-toggle="modal" style="width: inherit;" class="btn btn-primary mt-2 orderBtn"  type="button" >Rating</button>
+    </div>
+  </div>
+</div>
+
+<hr class="my-3 ">
+
+<div class="row">
+    <div class="col-md-2 mb-3 hide"> <small> Track Order </small> </div>
+    <div class="col mt-auto trackBar">
+        <div class="progress my-auto">
+            <div class="progress-bar progress-bar rounded moveBar" style="width:70%;" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="media row justify-content-between ">
+            <div class="col-auto text-right"><span> <small class="text-right mr-sm-2">Placed</small> <i class="fa fa-circle active"></i> </span></div>
+            <div class="col-auto text-right"><span> <small class="text-right mr-sm-2">Confirmed</small> <i class="fa fa-circle active"></i> </span></div>
+            <div class="flex-col"> <span> <small class="text-right col-sm-6 mr-sm-2">Packed</small><i class="fa fa-circle active"></i></span></div>
+            <div class="col-auto flex-col-auto text-right"><small class="text-right mr-sm-2">Delivered</small><span> <i class="fa fa-circle active"></i></span></div>
+        </div>
+    </div>
+</div>
+
+
+<app-rating *ngIf="fresh" [ID]="card._id" (Close)="setClose($event)"></app-rating>

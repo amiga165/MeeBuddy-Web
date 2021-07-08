@@ -1,0 +1,40 @@
+<div  class="container-fluid" style="width:95%;">
+	<section id="category" style="min-height: 900px;">
+		<div class="explore-menu-section pt-lg-3 pb-lg-3">
+	        <div class="container-fluid">
+	            <div class="row section-container">
+
+
+	                <div class="col-12">
+	                    <h1 class="menu-section-heading">Shops</h1>
+	                </div>
+                        <ng-container *ngIf="loading; else loaded">
+                                <div class="col-12 col-md-4 col-lg-4 pl-5 mt-4" *ngFor="let i of [1,2,3,4,5,6,7,8,9]">
+                                        <div>
+                                                <ngx-skeleton-loader [theme]="{ height: '130px', 'border-radius': '15px'}"></ngx-skeleton-loader>
+                                        </div>
+                                </div>
+                        </ng-container>
+
+			<ng-template #loaded>
+				<div *ngIf="products?.length == 0" style="width: 100%;" class="text-center"> <img src="../../../assets/img/empty-product.png" alt="No Items Found" style="margin-top:100px" class="img-fluid"></div>		
+		                <div *ngFor="let shopss of products" class="col-12 col-md-4 col-lg-4">
+					 <app-shop-card [data]="shopss" [link]="'shop'"></app-shop-card>
+		                </div>
+			</ng-template>
+	            </div>
+	        </div>
+		</div>
+
+<!--		<pagination-controls 
+			
+			class="d-flex justify-content-center mt-3 my-pagination" 
+			autoHide="true" 
+			responsive="true" 
+			[maxSize]="maxSize" 
+			(pageChange)="p = $event">
+					
+		</pagination-controls>  -->
+
+	</section> 
+</div>

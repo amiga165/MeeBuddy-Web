@@ -1,0 +1,42 @@
+@import url("../../../assets/css/checkout.css");
+
+.colcode{
+    background-color: #9055a2;
+    font-size: 12px;
+    padding: 6px 10px 6px 10px;
+}
+.notes {
+    margin-top : 70px;
+}
+
+.CTAs {
+        margin-top: 5px !important;
+}
+#mainCart { flex-direction: row !important; }
+
+@media only screen and (max-width: 900px) {
+
+    #cartDiv { width: 100% !important; }
+	#mobileCart { display: block !important; }
+    #mainCart { flex-direction: column-reverse !important; }
+	section.checkout { padding: 10px 0; } 
+    #screenCart {    margin-top: 0px !important;}
+	section.checkout .tab-content { padding: 0px; }
+	.hide { display: none !important; }
+
+        section.checkout .nav-pills {
+                background: #ffffff;
+                border-radius: 200px;
+                padding: 0;
+                border: none !important;
+                height: 50px;
+                overflow: hidden;
+                margin-bottom: 20px;
+        }
+    .notes { margin-top : 0px;} 
+    section.checkout .block-body {
+        border: none;
+        padding: 10px 20px;
+    }
+
+}

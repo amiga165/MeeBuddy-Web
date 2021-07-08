@@ -1,0 +1,45 @@
+<div class="container-fluid my-5" style="width:100%; min-height: 790px;">
+        <h2 class="text-center text-uppercase"> Upload image of your medicines </h2>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+                <div class="row mt-2">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-8 d-flex justify-content-center">
+                        <div id='profile-upload'>
+                            <div class="hvr-profile-img">
+                                <input #file type="file" name="logo" (change)="preview(file.files)" class="upload w180">
+                            </div>
+                            <i class="fa fa-camera"></i>
+                        </div>
+                    </div>
+                    <div class="col-lg-2"></div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-8">
+                        <div class="form-group">
+                            <select class="custom-select" [(ngModel)]="orderData.chosen_delivery_time">
+                                <option value="" selected disabled>Choose Delivery Time</option>
+                                <option [value]="time.timestamp" *ngFor="let time of delivery_times;">{{time.timing}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-2"></div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-8">
+                        <app-address-select (address)="setAddressId($event)"></app-address-select>
+                    </div>
+                    <div class="col-lg-2"></div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-8">
+                        <button type="submit" class="btn btn-primary btn-block" (click)="orderSubmit()" [disabled]="!orderData.image || !orderData.chosen_delivery_time || !orderData.address_id">Upload</button>
+                    </div>
+                    <div class="col-lg-2"></div>
+                </div>
+            </div>
+        </div>
+</div>

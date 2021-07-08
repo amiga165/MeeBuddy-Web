@@ -1,0 +1,74 @@
+<div class="tab-content">
+<!--   <div class="col-lg-4" id="mobileCart" style="display: none;">
+    <div class="block-body order-summary">
+    <app-summary [subamount]="amount" [totalamount]="total"></app-summary>
+    </div>
+  </div> -->
+  <div id="payment-method" class="tab-block">
+    <div id="accordion" role="tablist">
+
+      <div class="card">
+        <div id="collapseOne" role="tabpanel" aria-labelledby="headingOne" class="collapse show">
+          <div class="card-body">
+            <input type="radio" name="method" id="payment-method-1" value="razorpay" class="radio-template" [disabled]="checkWallet()">
+            <label for="payment-method-1"><strong>Online Payment (including 3 % Tax)</strong><br></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" *ngIf="dataService.userData.info.wallet > 0">
+        <div id="headingTwo" role="tab" class="card-header">
+          <h6><a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="collapsed">Wallet - <i class="fa fa-inr" aria-hidden="true"></i>{{dataService.userData.info.wallet}} </a></h6>
+        </div>
+        <div id="collapseTwo" role="tabpanel" aria-labelledby="headingTwo" class="collapse show">
+          <div class="card-body">
+
+
+		    <div class="checkbox switcher">
+			<label for="useWallet">  
+		      <input type="checkbox" id="useWallet" (change)="updateTotal(dataService.userData.useWallet)" value="true" [(ngModel)]="dataService.userData.useWallet">
+		        <span><small></small></span>
+		        <small style="font-size: large;"><b>Use Wallet</b></small></label>
+		    </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div id="collapseThree" role="tabpanel" aria-labelledby="headingThree" class="collapse show">
+          <div class="card-body">
+            <input type="radio" checked name="method" id="payment-method-2" value="cod" class="radio-template" [disabled]="checkWallet()">
+            <label for="payment-method-2"><strong>Pay on Delivery</strong><br></label>
+          </div>
+        </div>
+      </div>
+    </div>
+		<div class="row">
+        <div class="form-group col-md-6">
+          <label for="card-name" class="form-label">Choose Delivery Time</label>
+            <select class="form-control" placeholder="Select Time" style="border: 3px solid; padding: 0px 20px;" [(ngModel)]="orderData.chosen_delivery_time">
+               <option *ngFor="let single of deliveryTimings| slice:0:1" [value]="single.timestamp" selected><b>{{single.timing}}</b></option>
+                <option *ngFor="let time of deliveryTimings| slice:1" [value]="time.timestamp"><b>{{time.timing}}</b></option>
+             </select>
+        </div>
+
+        <div class="form-group col-md-6 search-wrapper">
+          <label for="card-name" class="form-label">Apply PromoCode</label>
+    			<input type="text" style="border: 3px solid;" name="promo" placeholder="Apply Promocode Here" class="form-control" disabled>
+    			<button type="submit" disabled>Apply</button>
+        </div>
+		</div>
+
+    <div class="form-group col-md-12" style="padding:0px">
+      <label for="card-name" class="form-label">Add Instructions</label>
+      <input type="text" style="border: 3px solid;" name="note" placeholder="Add Instructions" class="form-control" [(ngModel)]="orderData.note">
+
+    </div>
+
+
+    <div class="CTAs d-flex justify-content-between flex-column-reverse flex-lg-row">
+      <a (click)="back()" class="btn btn-template-outlined wide prev"><i class="fa fa-angle-left"></i>Back to Address</a>
+      <a (click)="Order()" class="btn btn-template wide next">Submit<i class="fa fa-angle-right"></i></a></div>
+  </div>
+</div>
+

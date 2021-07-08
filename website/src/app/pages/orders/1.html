@@ -1,0 +1,52 @@
+<section id="orders" style="padding-top:100px;">
+    <div class="container-fluid my-5 d-flex justify-content-center">
+        <!-- <div class="card card-1">
+            <div class="card-body"> -->
+                <div class="row">
+                    <div class="col"> 
+                        <div class="card card-2" *ngFor="let card of mycards">
+                            <div class="card-body">
+                                <div class="media">
+                                    <div class="sq align-self-center "> 
+                                      <img class="img-fluid my-auto align-self-center mr-2 mr-md-4 pl-0 p-0 m-0" src="{{card.image}}" width="135" height="135" /> </div>
+                                    <div class="media-body my-auto text-right">
+                                        <div class="row my-auto flex-column flex-md-row">
+                                            <div class="col my-auto">
+                                                <h6 class="mb-0">{{card.name}}</h6>
+                                            </div>
+                                            <div class="col-auto my-auto"> <small>{{card.description}} </small></div>
+                                            <div class="col my-auto"> <small>{{card.size}}</small></div>
+                                            <div class="col my-auto"> <small>{{card.quantity}}</small></div>
+                                            <div class="col my-auto">
+                                                <h6 class="mb-0">&#8377;{{card.amount}}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="my-3 ">
+                                <div class="row">
+                                    <div class="col-md-3 mb-3"> <small> Track Order </small> </div>
+                                    <div class="col mt-auto">
+                                        <div class="progress my-auto">
+                                            <div class="progress-bar progress-bar rounded" [style.width]="card.status + '%'" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+<!--                                        <div class="media row justify-content-between " *ngFor="let stat of stages; index as i"> -->
+<!--					<div class="col-auto text-right"><span> <small class="text-right mr-sm-2">{{stat}}</small> <i class="fa fa-circle active" *ngIf="i<(card.status/25)"></i> </span></div> -->
+<!-- <div class="col-auto text-right"><span> <small class="text-right mr-sm-2">{{stat}}</small> <i class="fa fa-circle active" *ngIf="i<=(card.status/4)"></i><i class="fa fa-circle" *ngIf="i>(card.status/4)"></i> </span></div>					 
+                                        </div> -->
+					<div class="media row justify-content-between ">
+                                            <div class="col-auto text-right"><span> <small class="text-right mr-sm-2">Ordered</small> <i class="fa fa-circle active"></i> </span></div>
+                                            <div class="col-auto text-right"><span> <small class="text-right mr-sm-2">Shipped</small> <i class="fa fa-circle active"></i> </span></div>
+                                            <div class="flex-col"> <span> <small class="text-right mr-sm-2">Out for delivery</small><i class="fa fa-circle active"></i></span></div>
+                                            <div class="col-auto flex-col-auto"><small class="text-right mr-sm-2">Delivered</small><span> <i class="fa fa-circle"></i></span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          <!--  </div>
+        </div> -->
+    </div>
+</section>

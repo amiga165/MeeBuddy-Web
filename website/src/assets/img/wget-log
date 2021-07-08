@@ -1,11 +1,0 @@
---2020-12-28 07:56:21--  https://i1.wp.com/www.huratips.com/wp-content/uploads/2019/04/empty-cart.png?fit=603%2C288
-Resolving i1.wp.com (i1.wp.com)... 192.0.77.2
-Connecting to i1.wp.com (i1.wp.com)|192.0.77.2|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 7608 (7.4K) [image/png]
-Saving to: ‘empty-cart.png?fit=603,288’
-
-empty-cart.png?fit=603,288                               0%[                                                                                                                           ]       0  --.-KB/s               empty-cart.png?fit=603,288                             100%[==========================================================================================================================>]   7.43K  --.-KB/s    in 0s      
-
-2020-12-28 07:56:22 (1.03 GB/s) - ‘empty-cart.png?fit=603,288’ saved [7608/7608]
-

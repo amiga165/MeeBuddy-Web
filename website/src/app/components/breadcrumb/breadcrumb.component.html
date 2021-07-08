@@ -1,8 +1,0 @@
-<nav class="mr-1">
-	<ol class="cd-breadcrumb custom-separator" id="navigate">
-		<li *ngFor="let bread of breadcrumbs; let last = last" [ngClass]="{'current': last}">
-			<a routerLink="{{bread.link}}" *ngIf="!last" style="font-weight: 600;">{{bread.label | titlecase }}</a>
-			<em *ngIf="last" class="truncate" style="font-weight: 600;">{{bread.label | titlecase }}</em>
-		</li>
-	</ol>
-</nav>

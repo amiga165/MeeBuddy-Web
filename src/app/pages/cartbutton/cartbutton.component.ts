@@ -168,6 +168,8 @@ refreshCart = new EventEmitter();
 		this.dataService.addToCart(res);
 		this.cartBlock = false; this.common.unLoad();
 	});
+
+  window.location.reload();
   }
 
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit} from "@angular/core";
 import {
   ActivatedRoute,
   Router,
@@ -6,7 +6,11 @@ import {
   PRIMARY_OUTLET,
   RoutesRecognized,
 } from "@angular/router";
+import { APIService } from "../../_services/api.service";
+import { ɵangular_packages_platform_browser_dynamic_platform_browser_dynamic_a } from '@angular/platform-browser-dynamic';
+import { CommonService } from '../../_services/common.service';
 import { filter, map } from "rxjs/operators";
+import { RestaurantItemsComponent } from 'src/app/pages/restaurants/restaurant-items/restaurant-items.component';
 
 
 @Component({
@@ -16,12 +20,34 @@ import { filter, map } from "rxjs/operators";
 })
 export class BreadcrumbComponent implements OnInit {
   breadcrumbs;
+  name: any;
+  url_name: any;
+  category_name: RestaurantItemsComponent;
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private common:CommonService, private activatedRoute: ActivatedRoute, private apiservice: APIService,private router: Router ) {
+    this.getCategorydetails();
     this.getLabels();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    //this.category_name = RestaurantItemsComponent.calld();
+  }
+
+ getCategorydetails(){
+    console.log("bread");
+    this.name = this.activatedRoute.snapshot.paramMap.get('center-name');
+    this.url_name = this.activatedRoute.snapshot.paramMap.get('url-name');
+      this.apiservice.postReq("/common/get_category_by_urlname",{shop_url_name:this.url_name})
+         .then((res: any)=>{
+            console.log("breadcrumb_Details:"+JSON.stringify(res));
+             
+         })
+    .catch(err => {
+      //this.toastr.error(err.message);
+    });
+
+
+  }
 
   getLabels() {
     this.router.events

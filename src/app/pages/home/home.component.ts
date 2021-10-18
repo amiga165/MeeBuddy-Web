@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
 
 
   getCategories() {
-
+//alert('rajj');
 	let shoppingData = this.dataService.center?.categories?.shopping;
 	if (shoppingData) {
 	        shoppingData.forEach(res => {

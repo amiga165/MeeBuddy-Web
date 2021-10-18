@@ -1,23 +1,23 @@
 <app-addressform *ngIf="isSelected" [data]="editaddress" (onClose)="close($event)" (changeAddress)="addressChange($event)"></app-addressform>
 
-<div class="tab-content" style="padding: 40px 0 0;">
+<div class="tab-content" style="padding: 30px 0 0;">
   <div id="address" class="active tab-block">
     <form action="#">
       <div>
         <h4 class="col-8 float-left">Shipping address</h4>
         <a style="cursor: pointer" (click)="editAddress()" data-toggle="modal" data-target="#edit" class="btn btn-template wide next col-4 addAddress">+ Add <span class="hide">Address</span></a>
       </div>
-	
-	<div>      
-      <div id="scrollablee" style="height: 320px;width:100%;">
+  
+  <div>      
+      <div id="scrollablee" style="height: 315px;width:100%;">
         
         <div class="row mx-3">
           
-	 <div class="text-center" *ngIf="address?.length === 0; else addressCard">
-	          <img src="../../../assets/img/empty-cart.png" class="img-fluid" style="max-width:100%;"> <br/>
+   <div class="text-center" *ngIf="address?.length === 0; else addressCard">
+            <img src="../../../assets/img/empty-cart.png" class="img-fluid" style="max-width:100%;"> <br/>
         </div>
-	<ng-template #addressCard>
-          <div class="col-lg-6" style="margin-top: 15px;" *ngFor="let shipping of address">
+  <ng-template #addressCard>
+          <!-- <div class="col-lg-6" style="margin-top: 15px;" *ngFor="let shipping of address">
               <div class="card hovercard clickable">
                 <label style="width: 100%;">
                 <div style="margin-top: 25px;">
@@ -31,22 +31,48 @@
                   <p class="add">{{dataService.userLocation.village.name}}</p>
                   <p class="add">{{dataService.userLocation.mandal}}, {{dataService.userLocation.district}}</p>
                   <p class="add">{{shipping.mobile_num}}</p>
+                  <p>hi</p>
                 </div>
               </label>
                 <div style="margin-left:50%; margin-bottom: 20px;">
                   <a style="color:#9055A2" *ngIf="defAddr !== shipping._id" (click)="setDefaultAddress(shipping._id)">Set default</a>&nbsp;&nbsp;
                   <a style="color:#9055A2; cursor: pointer" (click)="editAddress(shipping)" data-toggle="modal" data-target="#edit">Edit</a>&nbsp;&nbsp;
-                 <a style="color:#9055A2" *ngIf="editaddress && shipping._id == editaddress.address_id && editable == true" (click)="cancelEdit()">Cancel</a>&nbsp;&nbsp;
+                  <a style="color:#9055A2" *ngIf="editaddress && shipping._id == editaddress.address_id && editable == true" (click)="cancelEdit()">Cancel</a>&nbsp;&nbsp;
                   <a style="color:#9055A2" (click)="deleteAddress(shipping._id)">Delete</a>
                 </div>
-
               </div>
             
-          </div>
-	</ng-template>
+          </div> -->
+          
+          <div class="col-12" style="margin-top: 8px;" *ngFor="let shipping of address">
+            <div class="card hovercard clickable">
+              <label style="width: 100%;">
+              <div style="margin-top: ; " >
+                <input type="radio" id="preferred" (click)="selAddress(shipping._id)" name="selector" value="{{shipping._id}}" [checked]="selected === shipping._id">
+               <div class="check"></div> 
+              </div>
+          
+              <div class="ml-2 ">
+                <p class="add">{{shipping.name}}&nbsp;&nbsp; {{shipping.mobile_num}}</p>
+                <p class="add1">{{shipping.address}},{{dataService.userLocation.village.name}},{{dataService.userLocation.mandal}}, {{dataService.userLocation.district}}</p>
+              </div>
+            </label>
+              <div     class="ml-2">
+                <a style="color:#9055A2" *ngIf="defAddr !== shipping._id" (click)="setDefaultAddress(shipping._id)">Set default</a>&nbsp;&nbsp;
+                <a style="color:#9055A2; cursor: pointer" (click)="editAddress(shipping)" data-toggle="modal" data-target="#edit">Edit</a>&nbsp;&nbsp;
+                <a style="color:#9055A2" *ngIf="editaddress && shipping._id == editaddress.address_id && editable == true" (click)="cancelEdit()">Cancel</a>&nbsp;&nbsp;
+                <a style="color:#9055A2" (click)="deleteAddress(shipping._id)">Delete</a>
+              </div>
+            </div>
+          
+        </div>
+
+
+
+  </ng-template>
         </div>
       </div>
-	</div>
+  </div>
 
 
       <!-- <div id="addresscont" *ngIf="editable == false">
@@ -129,5 +155,13 @@
     </form>
   </div>
 </div>
+
+
+
+
+
+
+
+
 
 

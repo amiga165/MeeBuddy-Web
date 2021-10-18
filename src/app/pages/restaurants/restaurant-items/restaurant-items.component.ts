@@ -1,9 +1,13 @@
 import { Component, OnInit, ElementRef, ViewChild,HostListener } from '@angular/core';
+import { ɵangular_packages_platform_browser_dynamic_platform_browser_dynamic_a } from '@angular/platform-browser-dynamic';
+
 import { ActivatedRoute } from '@angular/router';
 import { CenterService } from "../../../_services/center.service";
 import { UserService } from "../../../_services/user.service";
 import { DataService } from "../../../_services/data.service";
 import { CommonService } from '../../../_services/common.service';
+import { GuestService } from "../../../_services/guest.service";
+import { APIService } from "../../../_services/api.service";
 
 
 @Component({
@@ -12,6 +16,13 @@ import { CommonService } from '../../../_services/common.service';
   styleUrls: ['./restaurant-items.component.scss']
 })
 export class RestaurantItemsComponent implements OnInit {
+
+
+ separateData: any = [];
+ loadinga = true;
+
+ category_id:any;
+ category_name:any;
 
   searchFood = [];
   status : boolean = false;
@@ -35,16 +46,66 @@ export class RestaurantItemsComponent implements OnInit {
   @ViewChild('showBottom') button: ElementRef;
   canShow = false;
 
-  constructor(private common:CommonService, private route: ActivatedRoute, private center: CenterService, public dataService : DataService, private user:UserService) 
+  constructor(private common:CommonService, private route: ActivatedRoute, private center: CenterService, public dataService : DataService, private user:UserService, public guest: GuestService, private apiservice: APIService) 
   {
-  
+    this.getCategorydetails();
     this.getItems();
     // console.log('food page center id'+this.center.getCenterId());
   }
 
   ngOnInit(): void { 
 //	console.log(this.searchFood);
+
+
+     this.user.getCartList().then(res => { 
+    this.loadinga = false; 
+    this.dataService.cart.list = res;
+    //this.dataService.cart.list.filter(item => item.product.category === this.category_id);
+    this.user.getCartCats().then(x => { this.separateData = x; this.filterCategories();});
+    });   
+
+
+
   }
+
+  calld(){
+    return this.category_name;
+  }
+
+
+   refresh(e){
+  this.user.getCartList().then(res => { 
+    this.loadinga = false; 
+    this.dataService.cart.list = res;
+    //this.dataService.cart.list.filter(item => item.product.category === this.category_id);
+    this.user.getCartCats().then(x => { this.separateData = x ; this.filterCategories();});
+    });
+
+  }
+
+
+  filterCategories(){
+    // console.log(this.separateData);
+    if (this.dataService.userData.isSignedIn){
+      this.separateData.forEach(x => {
+        let catData = this.dataService.cart.list.filter(item => {return item.product.category === x._id});
+
+        x.items = catData;  
+      });
+    }
+    else {
+
+      this.separateData = [{name: "Products", "items": this.guest.guestCart.items }];
+    }
+
+    return this.separateData;
+  }
+
+
+
+
+ getQuantity(Quantities,id) { let res = Quantities.filter(x => x._id === id);  return res; }
+
 
   @HostListener('window:scroll', ['$event'])
   onScroll(event) {
@@ -124,6 +185,26 @@ export class RestaurantItemsComponent implements OnInit {
   console.log("items", this.products)
   }
 
+  getCategorydetails(){
+
+    this.name = this.route.snapshot.paramMap.get('center-name');
+    this.url_name = this.route.snapshot.paramMap.get('url-name');
+    // this.id  = this.name.pop()
+        this.apiservice.postReq("/common/get_category_by_urlname",{shop_url_name:this.url_name})
+         .then((res: any)=>{
+             console.log("restaraunt details"+ JSON.stringify(res));
+             this.category_id = res.data._id;             
+             this.category_name = res.data.name;
+             
+         })
+    .catch(err => {
+      //this.toastr.error(err.message);
+    });
+
+
+  }
+  
+
 
   divideData() {
 	this.item_tags.forEach(tag => {
@@ -137,3 +218,4 @@ export class RestaurantItemsComponent implements OnInit {
   }
 
 }
+

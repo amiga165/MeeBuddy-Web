@@ -56,14 +56,14 @@ h4 {
 .mobile { display: none; }
 
 .float-child-one {
-  width: 20%;
+  width: 25%;
   float: left;
   padding: 10px;
   margin-top: 40px;
 }
 
 .float-child-two {
-  width: 80%;
+  width: 75%;
   float: right;
   padding: 20px;
   position: relative;
@@ -126,4 +126,166 @@ body {
 
 .my-pagination ::ng-deep .ngx-pagination .current {
   background: rgb(184, 76, 151);
+}
+
+.chekout-button
+  {
+    background-image: linear-gradient(120deg, rgba(60, 8, 118, 0.8) 0%, rgba(250, 0, 118, 0.8) 100%);
+    width:320px;
+    text-decoration: none;
+    border:0px;
+    color:white;
+    margin:5px;
+    height:43px;
+  }
+
+
+.btn {
+  padding: 0.425rem 1rem;
+}
+.jHVRcr {
+    left: 0;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 68%;
+    height: 2.2rem;
+    border: 1px solid rgb(54, 54, 54);
+    border-radius: 6.9px;
+    overflow: hidden;
+    cursor: initial;
+    user-select: none;
+    background: rgb(255, 255, 255);
+  }
+  .charges-text
+  {
+    font-size: 14px;
+  }
+  .items-count
+  {
+    font-size: 15px;
+  }
+  .total
+  {
+    font-size: 21px;
+  }
+  .cart-heading 
+  {
+    font-weight: bold;
+    font-size: 35px;
+  }
+  .item-name
+  {
+    font-size: 15px
+  }
+  .cMipmx
+  {
+    width:10px;
+  }
+  .chekout-button
+  {
+    background-image: linear-gradient(120deg, rgba(60, 8, 118, 0.8) 0%, rgba(250, 0, 118, 0.8) 100%);
+    width:320px;
+    text-decoration: none;
+    border:0px;
+    color:white;
+    margin:5px;
+    height:43px;
+  }
+  .arrs
+  {
+    margin-left: 5px;
+  }
+  .huikLB {
+    height: 100%;
+  }
+  
+  .cMipmx {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .hTzRFw {
+    position: relative;
+    width: 100%;
+    -webkit-box-flex: 0;
+    flex-grow: 0;
+    flex-shrink: 0;
+    max-width: 31.6667%;
+    padding: 0px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .iNGntN {
+    margin-top: 0.2rem;
+  }
+  
+  .MxLSp {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    cursor: inherit;
+  }
+  
+  .hoSSCx {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    width: 14px;
+    height: 14px;
+  }
+  
+  .iQCkqv {
+    position: relative;
+    width: 100%;
+    -webkit-box-flex: 0;
+    flex-grow: 0;
+    flex-shrink: 0;
+    max-width: 36.6667%;
+    padding: 0px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    cursor: pointer;
+
+
+  }
+  .item-price
+  {
+    font-size: 15px;
+  }
+  
+  .fTsfFl {
+    color: rgb(28, 28, 28);
+    font-size: 1.4rem;
+    margin: 0px 0.5rem;
+    font-weight: 500;
+  }
+  
+  .TZpZK {
+    margin-top: 0.2rem;
+  }
+
+.total-card{
+    justify-content: space-between;
+
+}
+.total-price,.total
+{
+  font-weight: bold;
+}
+.charges-text
+{
+  color:#837E7C;
 }

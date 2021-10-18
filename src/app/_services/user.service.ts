@@ -24,14 +24,14 @@ export class UserService {
    getUser(){
         
         return this.api.postReq("/user",{})
-		.then((res: any) => {
-		if (res.status == "success"){
-			return res.data
+        .then((res: any) => {
+        if (res.status == "success"){
+            return res.data
                 }
                 else { console.log("-_-"); }
 
-		})
-		.catch(err => { console.log(err); });
+        })
+        .catch(err => { console.log(err); });
    }
 
    updateUser(details){
@@ -168,7 +168,7 @@ export class UserService {
         return this.api.patchReq("/user/wishlist/add",{"item_id": Id})
                 .then((res: any) => {
                 if (res.status == "success"){
-			this.toastr.success("Item added to wishlist");
+            this.toastr.success("Item added to wishlist");
                         return res.data;
                 }
                 else { console.log("-_-"); }
@@ -189,7 +189,7 @@ export class UserService {
         return this.api.patchReq("/user/wishlist/remove",{"item_id": Id})
                 .then((res: any) => {
                 if (res.status == "success"){
-			this.toastr.success("Item removed from wishlist");
+            this.toastr.success("Item removed from wishlist");
                         return res.data;
                 }
                 else { console.log("-_-"); }
@@ -197,7 +197,7 @@ export class UserService {
                 })
                 .catch(err => {
                         if (err.status === 403) {
-				console.log(err);
+                console.log(err);
 //                                this.auth.logout();
                         }
                 });
@@ -273,8 +273,8 @@ export class UserService {
         return this.api.putReq("/user/cart/",data)
                 .then((res: any) => {
                 if (res.status == "success"){
-			console.log(res);
-			return res.data;
+            console.log(res);
+            return res.data;
                 }
                 else { console.log("-_-"); }
 
@@ -333,8 +333,8 @@ export class UserService {
         return this.api.postReq("/user/cart/delete",{"cart_item_id": ID})
                 .then((res: any) => {
                 if (res.status == "success"){
-			this.toastr.success("Item Removed");
-//			this.dataService.removeCart(ID);
+            this.toastr.success("Item Removed");
+//          this.dataService.removeCart(ID);
                         return true;
                 }
                 else { console.log("-_-"); }
@@ -354,7 +354,7 @@ export class UserService {
         return this.api.deleteReq("/user/cart")
                 .then((res: any) => {
                 if (res.status == "success"){
-			return true;
+            return true;
                 }
                 else { console.log("-_-"); }
 
@@ -392,7 +392,7 @@ export class UserService {
         return this.api.putReq("/user/order/regular/" + method , data)
                 .then((res: any) => {
                 if (res.status == "success"){
-			console.log(res.data);
+            console.log(res.data);
                         return res.data;
                 }
                 else { console.log("-_-"); }
@@ -438,10 +438,10 @@ export class UserService {
 
                 })
                 .catch(err => {
-		console.log(err);
+        console.log(err);
                 });
 
-	
+    
    }
 
    getImageOrders() {
@@ -504,7 +504,7 @@ export class UserService {
         return this.api.postReq("/user/notifications", {})
                 .then((res:any) => {
                 if(res.status == "success"){
-			return res.data;
+            return res.data;
                 }
                 else{ console.log("-_-");}
 
@@ -646,9 +646,9 @@ paymentVerify(data) {
                         .postReq("/user/wallet/verify", data)
                         .then((res: any) => {
                                 if (res.status == "success") {
-					console.log(data,res.data);
+                    console.log(data,res.data);
                                         this.toastr.success("Amount added succesfully");
-					return true;
+                    return true;
                                         
                                 } else {
                                         this.toastr.error("Something error occured");

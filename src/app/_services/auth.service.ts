@@ -78,6 +78,13 @@ export class AuthService {
 		.catch(err => { console.log(err);this.toastr.error("Invalid OTP"); });
 	}
 	
+	signin(data){
+		alert(data.mobile_num);
+		console.log('dada'+data);
+		
+	}
+	
+
 	logout() {
 		this.api.postReq("/user/logout",{})
 		.then((res: any) => {

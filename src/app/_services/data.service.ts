@@ -183,6 +183,11 @@ export class DataService {
 	this.userData.isSignedUp = true;
    }
 
+   signin(data) {
+	this.userData.signin = data;
+	this.userData.isSignedUp = true;
+   }
+
   login() {
 	this.userData.isSignedIn = true;
    } 

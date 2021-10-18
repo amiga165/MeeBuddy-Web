@@ -1,4 +1,4 @@
-<button #showBottom id="bottomBar" hidden></button>
+ <!-- <button #showBottom id="bottomBar" hidden></button>
 
 <div class="container-fluid" style="min-height: 900px;">
 	<section id="restaurant" class="restaurant">
@@ -46,8 +46,8 @@
 								<app-food-item [card]="Card"></app-food-item>
 							</div>
 						</div>
-					</ng-template>
-<!--				
+					</ng-template>  -->
+<!--previously commented		
 				<pagination-controls 
 			
 					class="d-flex justify-content-center mt-3 my-pagination" 
@@ -57,12 +57,146 @@
 					(pageChange)="p = $event">
 					
 				</pagination-controls>  -->
-			</div>
+			 <!-- </div>
 		</div>
 	        <app-floatapp [filtered_tags]="foodItems" id="mobile-menu"></app-floatapp>
 	</section>
 </div>
 
-<app-update-address-modal></app-update-address-modal>
+<app-update-address-modal></app-update-address-modal>  -->
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <button #showBottom id="bottomBar" hidden></button>
+
+<div class="container-fluid" style="min-height: 900px;">
+	<section id="restaurant" class="restaurant">
+		<div class="row">
+			<div class="col-lg-9">
+				<div class="float-child-one" (scroll)="onScroll($event)">
+
+					<div class="item" *ngIf="loading; else loadFilter">
+						<ngx-skeleton-loader count="10" [theme]="{ height: '30px' }"></ngx-skeleton-loader>
+					</div>
+					<ng-template #loadFilter>
+						<app-filter-mobile [filtered_tags]="item_tags"></app-filter-mobile>
+					</ng-template>
+				</div>
+				
+				<div class="float-child-two">
+
+						<ng-container *ngIf="loading; else loaded">
+
+							<div class="row" style="justify-content: space-evenly;" *ngFor="let i of [1,2,3,4]">
+								<div class="col-sm-12 col-lg-2 mt-lg-3 mt-1" *ngFor="let j of [1,2,3]">
+									<ngx-skeleton-loader [theme]="{ height: '130px', 'border-radius': '15px'}"></ngx-skeleton-loader>
+								</div>
+							</div>
+						</ng-container>
+
+						<ng-template #loaded>
+							
+							<div class="row section-container">
+					<div class="col-12 float-right">
+						<app-search-bar (searchTerm)="searchWord($event)"></app-search-bar>
+					</div>
+				</div>
+							<div *ngIf="products[0]?.items.length <= 0 && canShow" style="height:600px;padding: 100px;" class="text-center"><img src="../../../assets/img/no_result_found.png" class="img-fluid" height="400px"></div>
+							<div class="row section-container" id="{{item.sub_category}}" *ngFor="let item of foodItems"
+							infinite-scroll
+							[infiniteScrollDistance]="'1'"
+							[infiniteScrollUpDistance]="'2'"
+							[infiniteScrollThrottle]="300"
+							(scrolled)="onScrollDown()"
+							(scrolledUp)="onUp()">
+							
+								<h4 class="col-11 catName mb-3" *ngIf="item.list.length > 0">{{item.sub_category}} - ({{item.list.length}})</h4>
+								<div class="col-md-6 col-lg-6 item" *ngFor="let Card of item.list">
+									<app-food-item [card]="Card"></app-food-item>
+								</div>
+							</div>
+						</ng-template>
+				</div>
+			</div>
+			<div class="col-lg-3 ml-auto mt-6" (scroll)="onScroll($event)">
+				
+				<div class="mt-5">
+					
+					<!--<img src="../../../assets/img/noitem.png">-->
+
+
+	                    <div class="text-center" *ngIf="dataService.userData.isSignedIn ? dataService.cart?.list?.length === 0 : guest.guestCart?.items?.length === 0;">
+                    	<h2>Cart Empty</h2>
+                     <img src="../../../assets/img/empty-cart.png" class="img-fluid" style="max-width:100%;"> <br/>
+                       <a [routerLink]="['/home']" class="btn btn-template-outlined wide prev text-center"><i class="fa fa-angle-left"></i>Explore Other</a>
+                         </div>
+                       
+                        <div class="text-center" *ngIf="dataService.userData.isSignedIn ? dataService.cart?.list?.length !== 0 : guest.guestCart?.items?.length !== 0;">
+                        	<h2>Items in cart</h2>
+                        </div>
+
+
+		      <div class="basket-body card" *ngFor="let item of dataService.cart.list">
+
+                  <div class="text-center" *ngIf="dataService.userData.isSignedIn ? dataService.cart?.list?.length !== 0 : guest.guestCart?.items?.length !== 0;" >
+                    
+                      <div  *ngFor="let prod of item?.items">
+                      	<div>
+                          <img src={{prod.product?.images[0]?.image_url}} alt="..." class="img-fluid" style="width:10%;float: left;">
+                      	</div>
+                         <div style="width: 70%;float: left;">
+                      <a>
+                        <h6>{{prod.product.name}}</h6>
+                        <span class="text-muted" *ngFor="let quantity of prod.product.quantities">
+                          <ng-container *ngIf="prod.quantity === quantity._id">Size: {{quantity.quantity}}</ng-container>
+                        </span>
+                      </a>
+                       </div>
+                  <div style="width:20%;float:left;">
+            	 <app-cartbutton (refreshCart)="refresh($event)" [CARD]="prod" [quantity]="getQuantity(prod.product.quantities,prod.quantity)"></app-cartbutton>
+            	</div>           	
+            </div>
+       </div>
+    </div>
+                <div class="text-center" *ngIf="dataService.userData.isSignedIn ? dataService.cart?.list?.length !== 0 : guest.guestCart?.items?.length !== 0;" >
+                               
+                      <a [routerLink]="['/cart']" class="nav-link d-flex flex-row float-right cart" data-toggle="collapse">
+                      	<button class="chekout-button">CHECKOUT<i class="fas fa-arrow-right"></i></button>
+                </a>
+                </div>
+				</div>
+			</div>
+
+		</div>
+	        <app-floatapp [filtered_tags]="foodItems" id="mobile-menu"></app-floatapp>
+	</section>
+</div>
+
+<app-update-address-modal></app-update-address-modal>  

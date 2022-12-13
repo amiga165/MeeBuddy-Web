@@ -9,6 +9,16 @@
     100% { opacity: 1;transform: none; }
 }
 
+.field{
+  width: 300px;
+  border: 1px solid #000;
+}
+
+.location-ico{
+  position: relative;
+  top: 32px;
+  left: 10px;
+}
 
 
 input {
@@ -64,3 +74,38 @@ input {
   height: 40px;
   background: rgba(255, 255, 255, 0.5) !important;
 }
+
+.btn{
+  width:90%;
+}
+.or{
+  background-color: #f0efef;
+  border-radius: 50%;
+  width: 30px;
+  margin: auto;
+  text-align: center;
+}
+
+@media screen and (max-width: 480px){
+  .field{
+    width: 200px;
+  }
+}
+
+
+div li{
+  border: 10px;
+  padding: 5px;
+  border-bottom: 2px solid #bbb;
+  font-size: small;
+  color: black;
+  
+}
+.test{
+  overflow-y: scroll;
+  height: 100px;
+  width: 100%;
+  min-height: 300px;
+  max-height: 500px;
+}
+

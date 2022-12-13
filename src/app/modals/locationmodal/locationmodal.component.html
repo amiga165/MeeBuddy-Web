@@ -7,11 +7,11 @@
             <span aria-hidden="true" style="font-size: 40px; font-weight: 900;">&times;</span>
           </button>
         </h5>
-        <div class="card-body px-lg-5 py-lg-3 mt-4">
+        <div class="card-body px-lg-5 py-lg-3 mt-4" >
           <h4 class="text-center mb-3"> Choose your location</h4>
-          <div class="ng-autocomplete col-12 form-text">
+          <!-- <div class="ng-autocomplete col-12 form-text"> -->
 
-            <ng-autocomplete [data]="states" [searchKeyword]="keyword" (selected)='stateEvent($event)' placeHolder="Select State" [minQueryLength]="1"
+            <!-- <ng-autocomplete [data]="states" [searchKeyword]="keyword" (selected)='stateEvent($event)' placeHolder="Select State" [minQueryLength]="1"
               [itemTemplate]="itemTemplate"   [notFoundTemplate]="notFoundTemplate" notFoundText="Not found" id="state-inp">
             </ng-autocomplete><br/>
 
@@ -25,10 +25,9 @@
 
             <ng-autocomplete [data]="villages" [searchKeyword]="keyword" (selected)='villageEvent($event)' placeHolder="Select Village" [minQueryLength]="1"
               [itemTemplate]="itemTemplate"   [notFoundTemplate]="notFoundTemplate" notFoundText="Not found" id="village-inp">
-            </ng-autocomplete>
+            </ng-autocomplete> -->
 
-
-            <ng-template #itemTemplate let-item>
+              <!-- <ng-template #itemTemplate let-item>
               <a href="javascript:void(0)">
                 <span [innerHTML]="item.name"></span>
               </a>
@@ -38,13 +37,24 @@
               <span [innerHTML]="NotFound"></span>
             </ng-template>
 
-            <span class="help-block warning-block my-2" id="invalid-country" *ngIf="autocompleteError"><p class="text-danger my-2"><b>Please select the location</b></p></span>
+            <span class="help-block warning-block my-2" id="invalid-country" *ngIf="autocompleteError"><p class="text-danger my-2"><b>Please select the location</b></p></span> -->
+            <!-- <div class="text-center my-5"> -->
+              <div class="form-group col-md-6"> 
+                <i class="fa fa-map-marker location-ico" aria-hidden="true"></i>
+                <input id="firstname" type="text" placeholder="&nbsp;&nbsp;&nbsp;Enter Picode or location" (keyup)="searchVillages()" [(ngModel)]="location_keyword"  class="form-control field" >
+              </div> 
+              
+              <div class="test" *ngIf="searchedVillages.length>0">
+                
+              <li *ngFor="let village of searchedVillages;" (click)="selectVillage(village._id)" data-dismiss="modal">
+                <a  style="font-weight: 600;">{{village.name}}<Br/>{{village.mandal.name}},{{village.mandal.district.name}}-{{village.pincode}}></a>
+              </li>
+              </div>
+            <p class="or">or</p><br/>
+              <button class="btn btn-primary mr-1 hide" (click)="getlocation()" type="button" data-dismiss="modal" aria-label="Close"><i class="fa fa-map-marker" aria-hidden="true"></i>Current location</button>
+            <!-- </div> -->
 
-            <div class="text-center my-5">
-              <button class="btn btn-primary mr-1 hide" (click)="submit()" type="button" data-dismiss="modal" aria-label="Close">Continue</button>
-            </div>
-
-          </div> 
+          <!-- </div>  -->
 
           <div class="text-center text-muted" style="margin-top: 80px;">
             <svg xmlns="http://www.w3.org/2000/svg" width="50%" height="70%" fill="#ff66cc" class="bi bi-geo-alt" viewBox="0 0 16 16">

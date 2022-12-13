@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { CommonService } from "./common.service";
 
 
-let apiUrl = "https://api-testing.meebuddy.com/app/v3";
+let apiUrl = "https://api.meebuddy.com/app/v4";
  // let apiUrl = "http://192.168.100.2:8091/app/v3";
 //  let apiUrl = "http://192.168.98.203:8091/app/v3";
 

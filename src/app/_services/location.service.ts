@@ -73,6 +73,16 @@ export class LocationService {
 	.catch(err => {console.log(err);});
 
    }
+   getSearchedVillages(key){
+	return this.api.postReq("/common/search",{"key":key})
+	.then((res: any) => {
+			if (res.status == "success"){
+					return  res.data;
+			}
+			else { console.log("-_-"); }
+	})
+	.catch(err => {console.log(err);});
+   }
 
    getVillages(center){
 

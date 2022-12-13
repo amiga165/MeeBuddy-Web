@@ -22,7 +22,9 @@ export class LocationmodalComponent implements OnInit {
   villages: any = {}
   keyword = 'name';
   locationData : any = {}; 
+  searchedVillages:any={};
   data : any[] = [];
+  location_keyword:any="";
 
   constructor(
 	private api: APIService, 
@@ -53,7 +55,16 @@ export class LocationmodalComponent implements OnInit {
 		this.locationData[x] =  "";
 	});
   }
+  searchVillages()
+  { 
+			this.common.Load();
+			this.locationService.getSearchedVillages(this.location_keyword).then(res => {
+				this.searchedVillages = res; 
+				console.log('search listttt',res);
 
+				this.common.unLoad(); 
+			});
+  }
   stateEvent(item) { 
 			this.locationData.state = item._id; 
 			this.common.Load();
@@ -83,10 +94,31 @@ export class LocationmodalComponent implements OnInit {
 			});
             this.clearInputs(3); 
 		}
+		
+
+	getlocation(){
+		
+	}
 
   villageEvent(item){ 
 		this.locationData.village = { name:item.name, id:item._id };
 		}
+
+		selectVillage(id) {
+			this.common.Load() ;
+			this.locationService.selectVillage(id).then((x:any) => {
+				if (x.bool) { 
+					this.searchedVillages=[];
+					this.location_keyword='';
+					localStorage.setItem("Location",JSON.stringify(x.res.data));
+					this.dataService.getFullData();
+					this.router.navigate(['/home']);
+
+				
+				}
+				this.common.unLoad();
+			});
+		   }
 
    submit() {
 	this.common.Load() ;

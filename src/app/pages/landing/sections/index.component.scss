@@ -2,6 +2,38 @@
 	margin-right: 20px;
 	margin-bottom: 20px;
 }
+.img-1 {
+	position: relative;
+	width: 30%;
+
+
+}
+.my-5{
+// position: absolute;
+width: 585px;
+height: 125px;
+// left: 17px;
+// top: 221px;
+
+font-family: 'Flamante Round';
+font-style: medium;
+font-weight: 500;
+font-size: 86px;
+/* or 63% */
+
+text-align: center;
+
+color: #000000;
+}
+
+.my-flex{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+
 
  .mdi-36px {
      font-size: 39px;
@@ -12,12 +44,18 @@
      margin-top: 150px
  }
 
-
 @media only screen and (max-width: 900px) {
 	.bzamwU{ 
 		margin-bottom: 10px;
 		width: 300px;
 		height: 220px;
 	 }
+}
+
+@media screen and( max-width: 500px) {
+	.my-5{
+		font-size: 52px;
+		padding-top: 25px;
+	}
 }
 

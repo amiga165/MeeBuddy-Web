@@ -1,38 +1,76 @@
 <app-locationmodal></app-locationmodal>
 
-<nav class="navbar navbar-dark navbar-expand bg-primary justify-content-center"
-    style="background-image: linear-gradient( 135deg, rgba(60, 8, 118, 0.8) 0%, rgba(250, 0, 118, 0.8) 100%);padding: inherit;">
-
+<!-- <nav class="navbar navbar-dark navbar-expand bg-primary justify-content-center"
+    style="background-image: linear-gradient( 135deg, rgba(60, 8, 118, 0.8) 0%, rgba(250, 0, 118, 0.8) 100%);padding: inherit;"> -->
+    <nav class="navbar navbar-dark navbar-expand  justify-content-center"
+    style="background-color: black; padding: inherit;">
     <div class="container-fluid mx-lg-9" style="height: 70px;">
 
         <button class="navbar-toggler" type="button" (click)="toggle()">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <ul class="navbar-nav nav-justified w-100 text-center mt-1">
+        <ul class="navbar-nav nav-justified w-80 text-center mt-1">
 
-            <a class="navbar-brand  mr-0 mr-lg-3" style="margin-top:0px;" [routerLink]="['/']">
-                <img src="assets/img/brand/meebuddy_logo.png" style="height: 70px;" class="navbar-brand"
+            <a class="navbar-brand  mr-0 mr-lg-3" style="margin-top:0px; " [routerLink]="['']">
+                <img src="assets\img\Logo1.png" style="height: 50px; margin-left: 100px; margin-top: 10px;" class="navbar-brand"
                     id="brand-logo" />
             </a>
 
 
             <li class="nav-item mr-lg-9 showcursor">
-
-                <a id="location" data-toggle="modal" data-target="#location" class="nav-link d-flex flex-row"
-                    style="width:300px;">
-
+                <a id="location" data-toggle="modal" data-target="#location" class="nav-link d-flex flex-row" style="margin-right: -100px;">
                     <span class="ni ni-square-pin fa-lg  text-white mt-1"></span>
-
                     <span class="d-none d-sm-inline px-1">{{dataService.userLocation?.village?.name | slice:0:25 || "Select Location"}}</span>
+                </a>
+            </li>
+
+            
+            <li class="nav-item hide">
+                <a [routerLink]="['/shopping']"class="nav-link d-flex flex-row float-right" data-toggle="collapse" >
+                    <label for="shopping" class="mobile-item dropdown-toggle" style="margin-left: -80px;">Online Store</label>
+                </a>
+            </li>
+
+            <li class="nav-item hide">
+                <a [routerLink]="['/services']" class="nav-link d-flex flex-row float-right" data-toggle="collapse">
+                    <label for="services" class="mobile-item dropdown-toggle">Services</label>
+                </a>
+            </li>
+
+            <li class="nav-item hide">
+                <a [routerLink]="['/products']" class="nav-link d-flex flex-row float-right" data-toggle="collapse">
+                    <label for="products" class="mobile-item dropdown-toggle">Products</label>
+                </a>
+            </li>
+
+            <li class="nav-item hide">
+                <a [routerLink]="['/manager.php']" class="nav-link d-flex flex-row float-right" data-toggle="collapse">
+                    <label for="shopping" class="mobile-item dropdown-toggle">Apply for Franchise</label>
+                </a>
+            </li>
+            
+            <!-- <li class="nav-item pr-lg-7 hide">
+                <app-notification class="hide"></app-notification>
+            </li> -->
+
+            <li class="nav-item hide">
+                
+
+                <a [routerLink]="['/notifications']" class="nav-link d-flex flex-row float-right"
+                    data-toggle="collapse">
+
+                    <!-- <span class="ni ni-bell-55 fa-lg mt-1 text-white"></span> -->
+                    <label for="notifications">Notifications</label>
+                    <!-- <span class="d-none d-sm-inline px-1"></span> -->
 
                 </a>
 
             </li>
+             
+            <!-- <li class="nav-item hide ml-lg-11">
 
-            <li class="nav-item hide ml-lg-11">
-
-                <a [routerLink]="['/home']" class="nav-link d-flex flex-row float-right" data-toggle="collapse">
+                <a  class="nav-link d-flex flex-row float-right" data-toggle="collapse">
 
                     <span class="ni ni-shop fa-lg text-white mt-1"></span>
 
@@ -40,7 +78,7 @@
 
                 </a>
 
-            </li>
+            </li> -->
 
             <li class="nav-item hide">
 
@@ -48,34 +86,16 @@
 
                     <span class="fa fa-search fa-lg text-white mt-1"></span>
 
-                    <span class="d-none d-sm-inline px-1">Search</span>
+                    <!-- <span class="d-none d-sm-inline px-1">Search</span> -->
 
                 </a>
 
             </li>
 
-            <li class="nav-item dropdown hide showcursor">
-                <a *ngIf="!dataService.userData.isSignedIn; else user" class="nav-link text-center d-flex  float-right"
-                    data-toggle="modal" data-target="#Login">
-                    <span class="ni ni-single-02 fa-lg mt-1 text-white"></span>
-                    <span class="d-none d-sm-inline px-1">Login</span>
-                </a>
-
-                <ng-template #user>
-                    <a class="nav-link text-center d-flex  float-right" style="width:max-content;"
-                        [routerLink]="['/profile']" id="navbarDropdown" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-
-                        <span class="ni ni-single-02 fa-lg mt-1 text-white"></span>
-
-                        <span class="d-none d-sm-inline px-1">My Profile</span>
-
-                    </a>
-                </ng-template>
-            </li>
+            
 
 
-            <li class="nav-item">
+            <li class="nav-item hide">
 
                 <a [routerLink]="['/cart']" class="nav-link d-flex flex-row float-right cart" data-toggle="collapse">
 
@@ -91,7 +111,7 @@
                     <div *ngIf="dataService.cart?.list?.length >0 ||  guest.guestCart?.items?.length > 0"
                         class="sc-10mkyz7-0 sc-1woi3cc-0 jqmf1i-18 fWaRxC">{{ dataService.userData.isSignedIn ?
                         dataService.cart.list.length : guest.guestCart.items.length }}</div>
-                    <span class="d-none d-sm-inline px-1">Cart</span>
+                    <!-- <span class="d-none d-sm-inline px-1">Cart</span> -->
                 </a>
 
 <!-- 		<div class="dropdown-menu">
@@ -115,24 +135,26 @@
                 </div> -->
 
             </li>
-
-            <li class="nav-item pr-lg-7 hide">
-
-                <app-notification class="hide"></app-notification>
-
-            </li>
-
-            <li class="nav-item pr-lg-7 mobile-notification">
-                <a [routerLink]="['/notifications']" class="nav-link d-flex flex-row float-right"
-                    data-toggle="collapse">
-
-                    <span class="ni ni-bell-55 fa-lg mt-1 text-white"></span>
-
-                    <span class="d-none d-sm-inline px-1">Notifications</span>
-
+            <li class="nav-item dropdown showcursor">
+                <a *ngIf="!dataService.userData.isSignedIn; else user" class="nav-link text-center d-flex  float-right"
+                    data-toggle="modal" data-target="#Login">
+                    <span class="ni ni-single-02 fa-lg mt-1 text-white"></span>
+                    <span class="d-none d-sm-inline px-1">Login</span>
                 </a>
 
+                <ng-template #user>
+                    <a class="nav-link text-center d-flex  float-right" style="width:max-content;"
+                        [routerLink]="['/profile']" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+
+                        <span class="ni ni-single-02 fa-lg mt-1 text-white"></span>
+
+                        <!-- <span class="d-none d-sm-inline px-1">My Profile</span> -->
+
+                    </a>
+                </ng-template>
             </li>
+            
 
 
         </ul>

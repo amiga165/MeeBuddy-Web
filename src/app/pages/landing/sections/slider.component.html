@@ -1,5 +1,15 @@
-<ngx-slick-carousel class="carousel bg-dark" #slickModal="slick-carousel" [config]="slideConfig">
+<div class="containerfluid">
+<div class="sub-line">
+  <h3 style=" margin-left: 35px;
+  font-size: 1.2rem; 
+  color: #666666;">Get everything you want with one click.</h3>
+</div>
+<ngx-slick-carousel class="carousel bg-white" #slickModal="slick-carousel" [config]="slideConfig">
+  <!-- <div>
+    <label>Get everything you want with one click.</label>
+  </div> -->
     <div ngxSlickItem *ngFor="let slide of slides" class="slide px-4 py-4">
       <img src="{{ slide.img }}" alt="MeeBuddy" width="100%">
     </div>
 </ngx-slick-carousel>
+</div>

@@ -1,7 +1,20 @@
 .slick-slide {
     margin: 0 10px;
+    // background-color: white;
 }
 
 .slick-list {
     margin: 0 -10px;
 }
+
+.sub-line h3::before{
+        content: "";
+        position:absolute;
+        left: 35px;
+        border-radius: 5px;
+        margin-top: 30px;
+        width:250px;
+        height: 0.15em;; 
+        background-image: linear-gradient(to left, rgba(60, 8, 118, 0.8) 0%, rgba(250, 0, 118, 0.8) 100%);
+    } 
+

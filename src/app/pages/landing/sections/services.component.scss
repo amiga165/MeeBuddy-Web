@@ -6,16 +6,21 @@
 .banner-section-bg-container2 {}
 
 .banner-heading {
-    color: white;
-    font-family: "Roboto";
+    color: #B02B63;
+    font-family: "Poppins";
     font-size: 40px;
-    font-weight: 300;
+    font-weight: 400;
 
 }
-
+.my-flex{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
 .banner-caption {
-    color: orange;
-    font-family: "Roboto";
+    color: black;
+    font-family: "Poppins";
     font-size: 24px;
     font-weight: 300;
 }
@@ -36,4 +41,50 @@
     height:auto;
     position:relative;
 }
+.sub-line h3::before{
+    content: "";
+    position:absolute;
+    left: 35px;
+    border-radius: 5px;
+    margin-top: 30px;
+    width:250px;
+    height: 0.15em;; 
+    background-image: linear-gradient(to left, rgba(60, 8, 118, 0.8) 0%, rgba(250, 0, 118, 0.8) 100%);
+} 
 
+// @media only screen and (min-width:770px){
+//     .scl{
+//         position: relative;
+//         top: -10px;
+//         left: -15px;
+//     }
+
+//     .imgc{
+//         position: relative;
+//     }
+//     .imgc img{
+//         position: absolute;
+//                       left: -28px;
+//                       top: 2px;
+//                       height: 88%;
+//     }
+// }
+
+// @media screen and(max-width:1020px) {
+//     .scl{
+//         position: relative;
+//         // top: -10px;
+//         // left: -15px;
+//     }
+//     .imgc{
+//         position: relative;
+//     }
+//     .imgc img{
+//         position: absolute;
+//                     //   left: -28px;
+//                     //   top: 2px;
+//                       height: 100%;
+//     }
+
+    
+// }

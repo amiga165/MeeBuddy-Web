@@ -2,88 +2,36 @@
   <section id="index">
     <button type="button" data-toggle="modal" id="locpop" data-target="#location" style="display: none;"></button>
       <div class="container-fluid" style="padding-top:10px;padding-bottom: 0px;">
-        <div class="row align-items-center text-center">
-          <div class="col-lg-6 col-12" *ngIf="!dataService.userLocation?.village?.name">
-<!--            <app-textbar></app-textbar> -->
-            <h2 class="my-5">Get everything you want with one click.</h2>
-
-            <div class="ng-autocomplete  col-md-12 col-12 m-auto">
-              <ng-autocomplete [data]="data"  [searchKeyword]="keyword" (selected)='selectEvent($event)' (inputFocused)='onFocused()' placeHolder="Select Location" [minQueryLength]="1"
-                [itemTemplate]="itemTemplate"   [notFoundTemplate]="notFoundTemplate">
-              </ng-autocomplete>
-
-              <ng-template #itemTemplate let-item>
-                <a href="javascript:void(0)">
-                  <span [innerHTML]="item.name"></span>
-               </a>
-              </ng-template>
-
-              <ng-template #notFoundTemplate let-notFound>
-                <div [innerHTML]="NotFound"></div>
-              </ng-template>
-              <span class="help-block warning-block my-2" id="invalid-country" *ngIf="autocompleteError">
-                <p class="text-danger my-2"><b>Please select the location</b></p>
-              </span>
     
-           <div class="col-12 my-5 text-center">
-              <a href="https://play.google.com/store/apps/details?id=com.meebuddy.android"> <button class="btn btn-outline-dark btn-icon-text" style="border-radius: 15px; margin-right: 3px;"> <i class="fa fa-android btn-icon-prepend mdi-36px"></i> <span class="d-inline-block text-left"> <small class="font-weight-light d-block">Get it on the</small> Google Play </span> </button></a>
-              <a href="http://web.meebuddy.com"><button class="btn btn-outline-dark btn-icon-text" style="border-radius: 15px; margin-right: 3px;"> <i class="fa fa-globe btn-icon-prepend mdi-36px"></i> <span class="d-inline-block text-left"> <small class="font-weight-light d-block">Check Out</small> Website </span> </button></a>
-              <a href="https://apps.apple.com/us/app/meebuddy/id1554306664" >
-                <button class="btn btn-outline-dark btn-icon-text" style="border-radius: 15px;"> <i class="fa fa-apple btn-icon-prepend mdi-36px"></i> <span class="d-inline-block text-left"> <small class="font-weight-light d-block">Available on the</small> App Store </span> </button>
-              </a>
-            </div>
-
-            
-
-            </div>
-
-
-          </div>
-
-        <div *ngIf="dataService.userLocation?.village?.name" width="100%" itemscope="" itemtype="http://www.schema.org/SiteNavigationElement" style="bottom: 10px;" class="sc-10mkyz7-0 sc-1woi3cc-0 sc-861fib-0 eUVElf col-lg-6 text-center">
-          <h2 class="my-4">Get everything you want with one click.</h2>
-          <a itemprop="url" [routerLink]="['/restaurants']" class="jxbqi7-0 sc-861fib-2 cMxehO">
-            <img src="/assets/img/meebuddy/landing/restaurants.png" alt="" title="" width="245" height="180" class="sc-1go0t46-0 hvwMdS sc-861fib-3 bzamwU">
-          </a>
-          <a itemprop="url" [routerLink]="['/shopping']" class="jxbqi7-0 sc-861fib-2 cMxehO">
-            <img src="/assets/img/meebuddy/landing/onlinestore.png" alt="" title="" width="245" height="180" class="sc-1go0t46-0 hvwMdS sc-861fib-3 bzamwU">
-          </a> 
-          <br/>
-          <a itemprop="url" [routerLink]="['/services']" class="jxbqi7-0 sc-861fib-2 cMxehO">
-            <img src="/assets/img/meebuddy/landing/services.png" alt="" title="" width="245" height="180" class="sc-1go0t46-0 hvwMdS sc-861fib-3 bzamwU">
-          </a>
-          <a itemprop="url" [routerLink]="['/local-product']" class="jxbqi7-0 sc-861fib-2 cMxehO">
-            <img src="/assets/img/meebuddy/landing/localproducts.png" alt="" title="" width="245" height="180" class="sc-1go0t46-0 hvwMdS sc-861fib-3 bzamwU">
-          </a>
-
-          <div class="col-12 my-5 text-center">
-            <a href="https://play.google.com/store/apps/details?id=com.meebuddy.android">
-              <button class="btn btn-outline-dark btn-icon-text" style="border-radius: 15px; margin-right: 3px;"> <i class="fa fa-android btn-icon-prepend mdi-36px"></i> <span class="d-inline-block text-left"> <small class="font-weight-light d-block">Get it on the</small> Google Play </span> </button>
-         
-     </a>
-
-
-            <a href="http://web.meebuddy.com" ><button class="btn btn-outline-dark btn-icon-text" style="border-radius: 15px; margin-right: 3px;"> <i class="fa fa-globe btn-icon-prepend mdi-36px"></i> <span class="d-inline-block text-left"> <small class="font-weight-light d-block">Check Out</small> Website </span> </button></a>
-
-
-            <a href="https://apps.apple.com/us/app/meebuddy/id1554306664">
-              <button class="btn btn-outline-dark btn-icon-text" style="border-radius: 15px;"> <i class="fa fa-apple btn-icon-prepend mdi-36px"></i> <span class="d-inline-block text-left"> <small class="font-weight-light d-block">Available on the</small> App Store </span> </button>
-            </a>
-
-          </div>
-
         </div>
-
-          <div class="col-lg-6 col-md-6 col-12">
-            <!-- <app-circle></app-circle> -->
-            <div class="container">
-                
-                  <img src="../assets/img/landing.gif" calt="features" class="features_img  w:100 col-12 col-lg-10" />
+        <div class="my-flex ">
+            <div style="margin-top: -80px;" class="d-flex align-items-center flex-column justify-content-center text-center">
+              <h3  class="my-5">MeeBuddy</h3>
+              <h4 style="margin-top: -60px;">India’s Best Local Service App</h4>
+              <p style="max-width:400px">Local Shopping  |  Local Services  |  Local Products</p>
+              <h5>GET IT ON</h5>
+              <div class="d-flex">
+                <a href="https://play.google.com/store/apps/details?id=com.meebuddy.android"> 
+                  <img style="width: 100px;" src="assets/img/meebuddy/Section/playstore.png" alt="play store" /></a>
+                <!-- <a href="http://web.meebuddy.com"><button class="btn btn-outline-dark btn-icon-text" style="border-radius: 15px; margin-right: 3px;"> <i class="fa fa-globe btn-icon-prepend mdi-36px"></i> <span class="d-inline-block text-left"> <small class="font-weight-light d-block">Check Out</small> Website </span> </button></a> -->
+                <a href="https://apps.apple.com/us/app/meebuddy/id1554306664" >
+                <img style="width: 100px; margin-left: 25px" class="img" src="assets/img/meebuddy/Section/applestore.png" alt="App store" />
+                  <!-- <button class="btn btn-outline-dark btn-icon-text" style="border-radius: 15px;"> <i class="fa fa-apple btn-icon-prepend mdi-36px"></i> <span class="d-inline-block text-left"> <small class="font-weight-light d-block">Available on the</small> App Store </span> </button> -->
+                </a>
               </div>
+            </div>
+          <div class="d-flex flex-start" style="margin: 30px;
+          height: 300px;">
+             <div>
+              <img  style="width:180px;"src="assets/img/meebuddy/Section/main.png">
+             </div>
           </div>
-          <br>
+          <div>
+            <div>
+              <img style="width:600px; "src="assets/img/meebuddy/landing/landing.gif" calt="features" class="features_img  w:100 col-12 col-lg-10" />
+            </div>
+          </div>
         </div>
-      </div>
 
   </section>
 

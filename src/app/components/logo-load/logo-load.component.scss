@@ -1,137 +1,162 @@
-#logocontainer {
+// #logocontainer {
+//   display: block;
+//   position: fixed;
+//   top: 50%;
+//   left: 50%;
+//   z-index: 1051;
+//   width: 39vh;
+//   height: 17vh;
+//   margin-left: -17vh;
+//   margin-top: -14vh;
+//   overflow: hidden;
+//   transition: background-color 500ms;
+//   cursor: pointer;
+// }
+
+// #MBlogo {
+//   display: block;
+//   padding-left: 20px;
+//   position: absolute;
+//   left: 1vh;
+//   top: -7vh;
+//   width: 30vh;
+//   height: 30vh;
+//   font-family: Trebuchet MS, sans-serif;
+//   font-size: 6vh;
+//   font-weight: bold;
+//   color: #fff;
+//   text-shadow: 3px 3px #ff3385;
+//   text-align: center;
+//   line-height: 30vh;
+// }
+
+// .loader {
+//   display: block;
+//   position: absolute;
+//   background-color: #ac39ac;
+// }
+
+// @keyframes slide1 {
+//   50% {
+//     width: 32vh;
+//     margin-left: 0;
+//   }
+//   100% {
+//     margin-left: 32vh;
+//   }
+// }
+
+// @keyframes slide2 {
+//   50% {
+//     height: 32vh;
+//     margin-top: 0;
+//   }
+//   100% {
+//     margin-top: 32vh;
+//   }
+// }
+
+// @keyframes slide3 {
+//   50% {
+//     width: 32vh;
+//     margin-right: 0;
+//   }
+//   100% {
+//     margin-right: 32vh;
+//   }
+// }
+
+// @keyframes slide4 {
+//   50% {
+//     height: 32vh;
+//     margin-bottom: 0;
+//   }
+//   100% {
+//     margin-bottom: 32vh;
+//   }
+// }
+
+// #logocontainer{
+//     display:block;
+//     position:fixed;
+//     top:50%;
+//     left:50%;
+//     z-index: 1051;
+//     width:39vh;
+//     height:17vh;
+//     margin-left:-17vh;
+//     margin-top:-14vh;
+//     overflow:hidden;
+//     transition:background-color 500ms;
+//     cursor:pointer;
+//   }
+  
+//   #MBlogo{
+//     display: block;
+//     padding-left:20px;
+//     position: absolute;
+//     left: 1vh;
+//     top: -7vh;
+//     width: 30vh;
+//     height: 30vh;
+//     font-family: Trebuchet MS, sans-serif;
+//     font-size: 6vh;
+//     font-weight: bold;
+//     color:#fff;
+//     text-shadow: 3px 3px #ff3385;
+//     text-align: center;
+//     line-height: 30vh;
+//   }
+  
+//   .loader{
+//     display:block;
+//     position:absolute;
+//     background-color:#ac39ac;
+//   }
+  
+  
+//   @keyframes slide1{
+//     50%{width:32vh; margin-left:0;}
+//     100%{margin-left:32vh;}
+//   }
+  
+//   @keyframes slide2{
+//     50%{height:32vh; margin-top:0;}
+//     100%{margin-top:32vh;}
+//   }
+  
+//   @keyframes slide3{
+//     50%{width:32vh; margin-right:0;}
+//     100%{margin-right:32vh;}
+//   }
+  
+//   @keyframes slide4{
+//     50%{height:32vh; margin-bottom:0}
+//     100%{margin-bottom:32vh;}
+//   }
+
+//new
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.lds-dual-ring:after {
+  content: " ";
   display: block;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  z-index: 1051;
-  width: 39vh;
-  height: 17vh;
-  margin-left: -17vh;
-  margin-top: -14vh;
-  overflow: hidden;
-  transition: background-color 500ms;
-  cursor: pointer;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fcf;
+  border-color: #fcf transparent #fcf transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
 }
-
-#MBlogo {
-  display: block;
-  padding-left: 20px;
-  position: absolute;
-  left: 1vh;
-  top: -7vh;
-  width: 30vh;
-  height: 30vh;
-  font-family: Trebuchet MS, sans-serif;
-  font-size: 6vh;
-  font-weight: bold;
-  color: #fff;
-  text-shadow: 3px 3px #ff3385;
-  text-align: center;
-  line-height: 30vh;
-}
-
-.loader {
-  display: block;
-  position: absolute;
-  background-color: #ac39ac;
-}
-
-@keyframes slide1 {
-  50% {
-    width: 32vh;
-    margin-left: 0;
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
   }
   100% {
-    margin-left: 32vh;
+    transform: rotate(360deg);
   }
 }
-
-@keyframes slide2 {
-  50% {
-    height: 32vh;
-    margin-top: 0;
-  }
-  100% {
-    margin-top: 32vh;
-  }
-}
-
-@keyframes slide3 {
-  50% {
-    width: 32vh;
-    margin-right: 0;
-  }
-  100% {
-    margin-right: 32vh;
-  }
-}
-
-@keyframes slide4 {
-  50% {
-    height: 32vh;
-    margin-bottom: 0;
-  }
-  100% {
-    margin-bottom: 32vh;
-  }
-}
-
-#logocontainer{
-    display:block;
-    position:fixed;
-    top:50%;
-    left:50%;
-    z-index: 1051;
-    width:39vh;
-    height:17vh;
-    margin-left:-17vh;
-    margin-top:-14vh;
-    overflow:hidden;
-    transition:background-color 500ms;
-    cursor:pointer;
-  }
-  
-  #MBlogo{
-    display: block;
-    padding-left:20px;
-    position: absolute;
-    left: 1vh;
-    top: -7vh;
-    width: 30vh;
-    height: 30vh;
-    font-family: Trebuchet MS, sans-serif;
-    font-size: 6vh;
-    font-weight: bold;
-    color:#fff;
-    text-shadow: 3px 3px #ff3385;
-    text-align: center;
-    line-height: 30vh;
-  }
-  
-  .loader{
-    display:block;
-    position:absolute;
-    background-color:#ac39ac;
-  }
-  
-  
-  @keyframes slide1{
-    50%{width:32vh; margin-left:0;}
-    100%{margin-left:32vh;}
-  }
-  
-  @keyframes slide2{
-    50%{height:32vh; margin-top:0;}
-    100%{margin-top:32vh;}
-  }
-  
-  @keyframes slide3{
-    50%{width:32vh; margin-right:0;}
-    100%{margin-right:32vh;}
-  }
-  
-  @keyframes slide4{
-    50%{height:32vh; margin-bottom:0}
-    100%{margin-bottom:32vh;}
-  }
-

@@ -49,6 +49,7 @@ body {
 h1 {
   font-weight: bold;
   margin: 0;
+  font-size: 2rem;
 }
 
 h2 {
@@ -77,8 +78,8 @@ a {
 
 button {
   border-radius: 20px;
-  border: 1px solid #FF4B2B;
-  background-color: #FF4B2B;
+  // border: 1px solid #ff0066;
+  background: linear-gradient(to right, #660066,#e60099);
   color: #FFFFFF;
   font-size: 12px;
   font-weight: bold;
@@ -113,7 +114,8 @@ form {
 }
 
 input {
-  background-color: #e6f2ff;
+  background-color: #eeeeee;
+  border-radius: 1rem;
   border: none;
   padding: 10px 12px;
   margin: 8px 0;
@@ -121,7 +123,7 @@ input {
 }
 
 .container{
-  background-color: #ffe6f7;
+  background-color: #ffffff;
   border-radius: 10px;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
       0 10px 10px rgba(0,0,0,0.22);
@@ -131,8 +133,6 @@ input {
   max-width: 150%;
   min-height: 530px;
 }
-
-
 
 .form-container {
   position: absolute;
@@ -162,7 +162,7 @@ input {
   transform: translateX(100%);
   opacity: 1;
   z-index: 5;
-  animation: show 0.6s;
+  animation: show 0.6s; 
 }
 
 @keyframes show {
@@ -193,9 +193,8 @@ input {
 }
 
 .overlay {
-  background: #660066  ;
+  background: #660066;
   background: -webkit-linear-gradient(to right, #660066,#e60099);
-
   background: linear-gradient(to right, #660066,#e60099);
   background-repeat: no-repeat;
   background-size: cover;

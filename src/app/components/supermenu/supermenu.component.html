@@ -5,25 +5,6 @@
     <ul class="nav-links">
       <label for="close-btn" class="btn close-btn"> X </label>
      
- 
-<!--        <li>
-        <a [routerLink]="['/restaurants']" class="desktop-item dropdown-toggle">Restaurants</a>
-        <input type="checkbox" id="restaurant">
-        <label for="restaurant" class="mobile-item dropdown-toggle">Restaurants</label>
-        <div class="mega-box">
-          <div class="content">
-            <ng-container *ngFor="let chunks of chunk(dataService.center.categories?.shopping)">
-              <div class="row">
-                <ul class="mega-links">
-                  <li *ngFor="let shop of chunks"><a
-                      routerLink="/{{ shop.items_count ? 'shop' :  'shopping' }}/{{shop.center.name}}/{{shop.url_name}}"
-                      (click)="close()">{{shop.name.split("(")[0] | titlecase}}</a></li>
-                </ul>
-              </div>
-            </ng-container>
-          </div>
-        </div>
-      </li> -->
 
       <li>
         <a [routerLink]="['/shopping']" class="desktop-item dropdown-toggle">Online Store</a>
